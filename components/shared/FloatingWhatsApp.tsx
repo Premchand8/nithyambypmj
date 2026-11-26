@@ -17,8 +17,8 @@ export function FloatingWhatsApp() {
       <Image
         src="/brand/whatsapp-icon.png"
         alt=""
-        width={107}
-        height={112}
+          width={512}
+          height={512}
         className="h-full w-full object-cover"
         priority
       />

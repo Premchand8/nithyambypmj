@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { BagSearchIcons } from "@/components/shared/SiteIcons";
+import { SilverRateControl } from "@/components/shared/SilverRateControl";
 import type { PreviewPage } from "@/lib/types";
 
 export type NavLink = {
@@ -36,6 +37,8 @@ const toneStyles: Record<
     icon: "light" | "dark";
     menu: string;
     menuLink: string;
+    /** Mobile strip under the header (silver rate) */
+    mobileStrip: string;
   }
 > = {
   overlay: {
@@ -45,6 +48,7 @@ const toneStyles: Record<
     icon: "dark",
     menu: "border-white/15 bg-[#0A0A0A]/95 text-white",
     menuLink: "text-white/80 hover:bg-white/10 hover:text-white",
+    mobileStrip: "border-white/10 bg-black/50 text-white backdrop-blur-md",
   },
   "overlay-light": {
     bar: "pointer-events-none absolute inset-x-0 top-0 z-40 bg-gradient-to-b from-[#FAF8F7]/95 via-[#FAF8F7]/50 to-transparent",
@@ -53,6 +57,7 @@ const toneStyles: Record<
     icon: "light",
     menu: "border-[#E8E4E2] bg-[#FAF8F7]/98 text-[#161616]",
     menuLink: "text-[#3A3A42] hover:bg-black/5",
+    mobileStrip: "border-[#E8E4E2]/80 bg-[#FAF8F7]/92 text-[#161616] backdrop-blur-md",
   },
   "solid-light": {
     bar: "sticky top-0 z-40 border-b border-[#E8E4E2] bg-[#FAF8F7]/95 backdrop-blur-md",
@@ -62,6 +67,7 @@ const toneStyles: Record<
     icon: "light",
     menu: "border-[#E8E4E2] bg-[#FAF8F7] text-[#161616]",
     menuLink: "text-[#3A3A42] hover:bg-black/5",
+    mobileStrip: "border-[#E8E4E2] bg-[#FAF8F7]/95 text-[#161616]",
   },
   "solid-dark": {
     bar: "sticky top-0 z-40 border-b border-white/10 bg-[#111111]/95 backdrop-blur-md",
@@ -70,6 +76,7 @@ const toneStyles: Record<
     icon: "dark",
     menu: "border-white/10 bg-[#111111] text-white",
     menuLink: "text-white/80 hover:bg-white/10",
+    mobileStrip: "border-white/10 bg-[#111111]/95 text-white",
   },
   "solid-forest": {
     bar: "sticky top-0 z-40 border-b border-[#E8C17A]/20 bg-[#1B3022]/95 backdrop-blur-md",
@@ -78,6 +85,7 @@ const toneStyles: Record<
     icon: "dark",
     menu: "border-[#E8C17A]/20 bg-[#15261B] text-[#F4F4F6]",
     menuLink: "text-[#F4F4F6]/85 hover:bg-white/5",
+    mobileStrip: "border-[#E8C17A]/20 bg-[#1B3022]/95 text-[#F4F4F6]",
   },
 };
 
@@ -152,8 +160,12 @@ export function SiteHeader({
         </nav>
 
         <div
-          className={`relative z-20 ml-auto flex max-w-[46%] items-center justify-end gap-0.5 pl-2 sm:max-w-none sm:gap-2 sm:pl-[min(30vw,200px)] ${pe}`}
+          className={`relative z-20 ml-auto flex items-center justify-end gap-0.5 pl-2 sm:gap-2 sm:pl-[min(30vw,200px)] ${pe}`}
         >
+          {/* Desktop: silver rate stays top-right */}
+          <div className="hidden lg:block">
+            <SilverRateControl tone={styles.icon} />
+          </div>
           <BagSearchIcons tone={styles.icon} />
           <button
             type="button"
@@ -165,6 +177,15 @@ export function SiteHeader({
           >
             {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
+        </div>
+      </div>
+
+      {/* Mobile: silver rate under the menu/header — clear of tools + WhatsApp float */}
+      <div
+        className={`pointer-events-auto border-b lg:hidden ${styles.mobileStrip} ${pe}`}
+      >
+        <div className="mx-auto flex max-w-[1400px] items-center px-4 py-2 sm:px-6">
+          <SilverRateControl tone={styles.icon} />
         </div>
       </div>
 

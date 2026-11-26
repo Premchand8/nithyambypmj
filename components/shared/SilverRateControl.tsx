@@ -57,12 +57,12 @@ export function SilverRateControl({ tone = "dark" }: Props) {
         aria-expanded={open}
         aria-haspopup="dialog"
         aria-label={`Today’s silver rate, Hyderabad, ${formatInr(rates.today.perGramInr, 1)} per gram`}
-        className={`inline-flex h-8 max-w-[7.25rem] items-center gap-1 border-b px-0.5 transition sm:h-9 sm:max-w-none sm:gap-1.5 ${trigger} ${triggerRule}`}
+        className={`inline-flex h-8 items-center gap-1.5 border-b px-0.5 transition sm:h-9 ${trigger} ${triggerRule}`}
       >
-        <span className="hidden text-[10px] uppercase tracking-[0.16em] opacity-80 md:inline">
+        <span className="text-[10px] uppercase tracking-[0.16em] opacity-80">
           Silver rate
         </span>
-        <span className="text-[12px] font-medium tabular-nums tracking-tight">
+        <span className="text-[12px] font-medium tabular-nums tracking-tight sm:text-[13px]">
           {formatInr(rates.today.perGramInr, 1)}
           <span className="font-normal opacity-65">/g</span>
         </span>

@@ -92,9 +92,9 @@ export function Breadcrumbs({ items, tone = "light", className = "" }: Props) {
   return (
     <nav
       aria-label="Breadcrumb"
-      className={`mb-6 ${styles.wrap} ${className}`}
+      className={`mb-2 ${styles.wrap} ${className}`}
     >
-      <ol className="flex flex-wrap items-center gap-x-1.5 gap-y-1 text-[11px] uppercase tracking-[0.16em]">
+      <ol className="flex flex-wrap items-center gap-x-1.5 gap-y-1 text-[10px] uppercase tracking-[0.14em] sm:text-[11px]">
         {items.map((item, i) => {
           const isLast = i === items.length - 1;
           return (

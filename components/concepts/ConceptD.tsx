@@ -66,7 +66,13 @@ export function ConceptD({
   });
 
   return (
-    <div className="relative min-h-full bg-[#1B3022] text-[#F4F4F6] [--font-display:var(--font-cormorant)]">
+    <div
+      className={`relative bg-[#1B3022] text-[#F4F4F6] [--font-display:var(--font-cormorant)] ${
+        page === "shop" || page === "product"
+          ? "h-svh overflow-hidden"
+          : "min-h-full"
+      }`}
+    >
       <SiteHeader
         page={page}
         onNavigate={onNavigate}
@@ -168,25 +174,26 @@ export function ConceptD({
       )}
 
       {page === "shop" && (
-        <section className="px-5 pb-20 pt-10 md:px-10 md:pb-24">
-          <div className="mx-auto max-w-6xl">
-            <Breadcrumbs
-              items={crumbs}
-              tone="forest"
-              className="[&_ol]:justify-center"
-            />
-            <div className="text-center">
-              <h1 className="font-[family-name:var(--font-cormorant)] text-4xl text-[#F8F4EC] md:text-5xl">
+        <section className="flex h-[calc(100svh-4.5rem)] flex-col overflow-hidden px-4 pb-3 pt-3 sm:h-[calc(100svh-5rem)] sm:px-6 md:px-8 md:pb-4 md:pt-4">
+          <div className="mx-auto flex min-h-0 w-full max-w-7xl flex-1 flex-col">
+            <div className="shrink-0 text-center">
+              <Breadcrumbs
+                items={crumbs}
+                tone="forest"
+                className="[&_ol]:justify-center"
+              />
+              <h1 className="font-[family-name:var(--font-cormorant)] text-xl text-[#F8F4EC] sm:text-2xl md:text-3xl">
                 Our collection
               </h1>
-              <p className="mt-3 text-sm text-[#D5D8C8]/80">Sample pricing only</p>
+              <p className="mt-0.5 text-xs text-[#D5D8C8]/80">Sample pricing only</p>
             </div>
-            <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="mt-3 grid min-h-0 flex-1 grid-cols-2 gap-2 overflow-y-auto auto-rows-[minmax(7.5rem,1fr)] sm:grid-cols-3 md:mt-4 md:auto-rows-[minmax(0,1fr)] md:grid-cols-4 md:gap-3 md:overflow-hidden">
               {products.map((p) => (
                 <ProductCard
                   key={p.id}
                   product={p}
                   tone="forest"
+                  layout="compact"
                   onOpen={onOpenProduct}
                 />
               ))}
@@ -196,11 +203,11 @@ export function ConceptD({
       )}
 
       {page === "product" && (
-        <section className="px-5 pb-20 pt-10 md:px-10 md:pb-24">
-          <div className="mx-auto max-w-6xl">
+        <section className="flex h-[calc(100svh-4.5rem)] flex-col overflow-hidden px-4 pb-3 pt-3 sm:h-[calc(100svh-5rem)] sm:px-6 md:px-8 md:pb-4 md:pt-4">
+          <div className="mx-auto flex min-h-0 w-full max-w-6xl flex-1 flex-col">
             <Breadcrumbs items={crumbs} tone="forest" />
-            <div className="mt-2 grid gap-10 lg:grid-cols-2">
-              <div className="relative aspect-[4/5] overflow-hidden border border-[#E8C17A]/25">
+            <div className="mt-2 grid min-h-0 flex-1 gap-4 overflow-y-auto md:grid-cols-2 md:items-stretch md:gap-6 md:overflow-hidden">
+              <div className="relative min-h-[38svh] overflow-hidden border border-[#E8C17A]/25 md:min-h-0">
                 <Image
                   src={activeProduct.image}
                   alt={activeProduct.name}
@@ -210,31 +217,31 @@ export function ConceptD({
                   priority
                 />
               </div>
-              <div className="flex flex-col justify-center">
+              <div className="flex flex-col justify-center md:overflow-hidden">
                 <p className="text-[11px] uppercase tracking-[0.22em] text-[#E8C17A]">
                   {activeProduct.sku}
                 </p>
-                <h1 className="mt-3 font-[family-name:var(--font-cormorant)] text-4xl text-[#F8F4EC] md:text-5xl">
+                <h1 className="mt-2 font-[family-name:var(--font-cormorant)] text-2xl text-[#F8F4EC] sm:text-3xl md:text-4xl">
                   {activeProduct.name}
                 </h1>
-                <p className="mt-5 text-sm leading-7 text-[#D5D8C8]/85">
+                <p className="mt-3 text-sm leading-6 text-[#D5D8C8]/85 line-clamp-3 md:line-clamp-4">
                   {activeProduct.blurb}
                 </p>
-                <div className="mt-6 flex items-center gap-3">
-                  <p className="text-2xl text-[#F8F4EC]">
+                <div className="mt-4 flex items-center gap-3">
+                  <p className="text-xl text-[#F8F4EC]">
                     {formatSamplePrice(activeProduct.samplePriceInr)}
                   </p>
                   <SampleBadge />
                 </div>
-                <div className="mt-8 flex flex-wrap gap-3">
+                <div className="mt-5 flex flex-wrap gap-2">
                   <WhatsAppButton
                     sku={activeProduct.sku}
-                    className="!bg-[#C9893A] !text-[#1B3022]"
+                    className="!bg-[#C9893A] !px-4 !py-2.5 !text-xs !text-[#1B3022]"
                   />
                   <button
                     type="button"
                     onClick={() => onBack("shop")}
-                    className="border border-[#E8C17A]/40 px-5 py-3 text-sm text-[#F8F4EC]"
+                    className="border border-[#E8C17A]/40 px-4 py-2.5 text-xs text-[#F8F4EC]"
                   >
                     Back
                   </button>
@@ -302,11 +309,13 @@ export function ConceptD({
         </section>
       )}
 
-      <footer className="border-t border-[#E8C17A]/15 px-5 py-10 text-center md:px-8">
-        <p className="text-xs uppercase tracking-[0.16em] text-[#C0C0C8]/70">
-          {brand.parentLine}
-        </p>
-      </footer>
+      {page !== "shop" && page !== "product" ? (
+        <footer className="border-t border-[#E8C17A]/15 px-5 py-10 text-center md:px-8">
+          <p className="text-xs uppercase tracking-[0.16em] text-[#C0C0C8]/70">
+            {brand.parentLine}
+          </p>
+        </footer>
+      ) : null}
     </div>
   );
 }

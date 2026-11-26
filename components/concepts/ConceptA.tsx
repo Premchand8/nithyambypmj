@@ -47,7 +47,13 @@ export function ConceptA({
   });
 
   return (
-    <div className="relative min-h-full bg-[#0A0A0A] text-[#F4F4F6] [--font-display:var(--font-cormorant)]">
+    <div
+      className={`relative bg-[#0A0A0A] text-[#F4F4F6] [--font-display:var(--font-cormorant)] ${
+        page === "shop" || page === "product"
+          ? "h-svh overflow-hidden"
+          : "min-h-full"
+      }`}
+    >
       <SiteHeader
         page={page}
         onNavigate={onNavigate}
@@ -116,21 +122,25 @@ export function ConceptA({
       )}
 
       {page === "shop" && (
-        <section className="px-5 pb-20 pt-10 md:px-10 md:pb-24">
-          <div className="mx-auto max-w-6xl text-center">
-            <Breadcrumbs items={crumbs} tone="gold" className="justify-center text-left sm:text-center [&_ol]:justify-center" />
-            <p className="text-[10px] uppercase tracking-[0.32em] text-[#B8883A]">
-              Catalogue
-            </p>
-            <h1 className="mt-3 font-[family-name:var(--font-cormorant)] text-4xl text-white md:text-6xl">
-              Our collection
-            </h1>
-            <div className="mt-14 grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:mt-16 lg:grid-cols-3">
+        <section className="flex h-[calc(100svh-4.5rem)] flex-col overflow-hidden px-4 pb-3 pt-3 sm:h-[calc(100svh-5rem)] sm:px-6 md:px-8 md:pb-4 md:pt-4">
+          <div className="mx-auto flex min-h-0 w-full max-w-7xl flex-1 flex-col">
+            <div className="shrink-0 text-center">
+              <Breadcrumbs
+                items={crumbs}
+                tone="gold"
+                className="[&_ol]:justify-center"
+              />
+              <h1 className="font-[family-name:var(--font-cormorant)] text-xl text-white sm:text-2xl md:text-3xl">
+                Our collection
+              </h1>
+            </div>
+            <div className="mt-3 grid min-h-0 flex-1 grid-cols-2 gap-2 overflow-y-auto auto-rows-[minmax(7.5rem,1fr)] sm:grid-cols-3 md:mt-4 md:auto-rows-[minmax(0,1fr)] md:grid-cols-4 md:gap-3 md:overflow-hidden">
               {products.map((p) => (
                 <ProductCard
                   key={p.id}
                   product={p}
                   tone="dark"
+                  layout="compact"
                   onOpen={onOpenProduct}
                 />
               ))}
@@ -140,46 +150,49 @@ export function ConceptA({
       )}
 
       {page === "product" && (
-        <section className="px-5 pb-20 pt-10 md:px-10 md:pb-24">
-          <div className="mx-auto max-w-6xl">
+        <section className="flex h-[calc(100svh-4.5rem)] flex-col overflow-hidden px-4 pb-3 pt-3 sm:h-[calc(100svh-5rem)] sm:px-6 md:px-8 md:pb-4 md:pt-4">
+          <div className="mx-auto flex min-h-0 w-full max-w-6xl flex-1 flex-col">
             <Breadcrumbs items={crumbs} tone="gold" />
-          </div>
-          <div className="mx-auto mt-2 grid max-w-6xl items-center gap-10 lg:grid-cols-2 lg:gap-12">
-            <div className="relative aspect-[4/5] overflow-hidden border border-[#B8883A]/25">
-              <Image
-                src={activeProduct.image}
-                alt={activeProduct.name}
-                fill
-                className="object-cover"
-                sizes="(max-width:1024px) 100vw, 50vw"
-                priority
-              />
-            </div>
-            <div>
-              <p className="text-[10px] uppercase tracking-[0.28em] text-[#B8883A]">
-                {activeProduct.sku}
-              </p>
-              <h1 className="mt-4 font-[family-name:var(--font-cormorant)] text-4xl text-white md:text-5xl">
-                {activeProduct.name}
-              </h1>
-              <p className="mt-5 max-w-md text-sm leading-7 text-white/65">
-                {activeProduct.blurb}
-              </p>
-              <div className="mt-8 flex items-center gap-3">
-                <p className="text-2xl text-[#E8C17A]">
-                  {formatSamplePrice(activeProduct.samplePriceInr)}
-                </p>
-                <SampleBadge />
+            <div className="mt-2 grid min-h-0 flex-1 gap-4 overflow-y-auto md:grid-cols-2 md:items-stretch md:gap-6 md:overflow-hidden">
+              <div className="relative min-h-[38svh] overflow-hidden border border-[#B8883A]/25 md:min-h-0">
+                <Image
+                  src={activeProduct.image}
+                  alt={activeProduct.name}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width:768px) 100vw, 50vw"
+                  priority
+                />
               </div>
-              <div className="mt-10 flex flex-wrap gap-3">
-                <WhatsAppButton sku={activeProduct.sku} />
-                <button
-                  type="button"
-                  onClick={() => onBack("shop")}
-                  className="border border-white/25 px-5 py-3 text-sm text-white/80"
-                >
-                  Back
-                </button>
+              <div className="flex flex-col justify-center py-1 md:overflow-hidden">
+                <p className="text-[10px] uppercase tracking-[0.28em] text-[#B8883A]">
+                  {activeProduct.sku}
+                </p>
+                <h1 className="mt-2 font-[family-name:var(--font-cormorant)] text-2xl text-white sm:text-3xl md:text-4xl">
+                  {activeProduct.name}
+                </h1>
+                <p className="mt-3 max-w-md text-sm leading-6 text-white/65 line-clamp-3 md:line-clamp-4">
+                  {activeProduct.blurb}
+                </p>
+                <div className="mt-4 flex items-center gap-3">
+                  <p className="text-xl text-[#E8C17A]">
+                    {formatSamplePrice(activeProduct.samplePriceInr)}
+                  </p>
+                  <SampleBadge />
+                </div>
+                <div className="mt-5 flex flex-wrap gap-2">
+                  <WhatsAppButton
+                    sku={activeProduct.sku}
+                    className="!px-4 !py-2.5 !text-xs"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => onBack("shop")}
+                    className="border border-white/25 px-4 py-2.5 text-xs text-white/80"
+                  >
+                    Back
+                  </button>
+                </div>
               </div>
             </div>
           </div>
@@ -235,11 +248,13 @@ export function ConceptA({
         </section>
       )}
 
-      <footer className="border-t border-[#B8883A]/15 px-5 py-10 text-center md:px-10">
-        <p className="text-[10px] uppercase tracking-[0.22em] text-white/40">
-          {brand.parentLine}
-        </p>
-      </footer>
+      {page !== "shop" && page !== "product" ? (
+        <footer className="border-t border-[#B8883A]/15 px-5 py-10 text-center md:px-10">
+          <p className="text-[10px] uppercase tracking-[0.22em] text-white/40">
+            {brand.parentLine}
+          </p>
+        </footer>
+      ) : null}
     </div>
   );
 }

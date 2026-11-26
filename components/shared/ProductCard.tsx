@@ -7,7 +7,7 @@ type Props = {
   product: Product;
   onOpen?: (product: Product) => void;
   tone?: "light" | "dark" | "forest";
-  layout?: "grid" | "editorial" | "minimal";
+  layout?: "grid" | "editorial" | "minimal" | "compact";
 };
 
 export function ProductCard({
@@ -23,6 +23,35 @@ export function ProductCard({
         ? "text-[#F4F4F6]"
         : "text-[#161616]";
   const muted = tone === "light" ? "text-[#6B6B73]" : "text-white/65";
+
+  /** Viewport-fit shop grids — short image + one-line meta */
+  if (layout === "compact") {
+    return (
+      <button
+        type="button"
+        onClick={() => onOpen?.(product)}
+        className={`group flex h-full min-h-0 flex-col text-left ${text}`}
+      >
+        <div className="relative min-h-0 w-full flex-1 overflow-hidden bg-black/5">
+          <Image
+            src={product.image}
+            alt={product.name}
+            fill
+            className="object-cover transition duration-500 group-hover:opacity-90"
+            sizes="(max-width:768px) 50vw, 20vw"
+          />
+        </div>
+        <div className="mt-1.5 flex shrink-0 items-baseline justify-between gap-2">
+          <p className="truncate text-[11px] leading-tight tracking-wide sm:text-xs">
+            {product.name}
+          </p>
+          <p className={`shrink-0 text-[11px] tabular-nums sm:text-xs ${muted}`}>
+            {formatSamplePrice(product.samplePriceInr)}
+          </p>
+        </div>
+      </button>
+    );
+  }
 
   if (layout === "editorial") {
     return (
@@ -110,9 +139,7 @@ export function ProductCard({
           {product.sku}
         </p>
         <div className="flex items-center gap-2 pt-1">
-          <p className="text-sm">
-            {formatSamplePrice(product.samplePriceInr)}
-          </p>
+          <p className="text-sm">{formatSamplePrice(product.samplePriceInr)}</p>
           <SampleBadge />
         </div>
       </div>

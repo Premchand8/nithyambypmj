@@ -47,7 +47,13 @@ export function ConceptC({
   });
 
   return (
-    <div className="relative min-h-full bg-[#111111] text-[#EDEDED] [--font-display:var(--font-instrument)]">
+    <div
+      className={`relative bg-[#111111] text-[#EDEDED] [--font-display:var(--font-instrument)] ${
+        page === "shop" || page === "product"
+          ? "h-svh overflow-hidden"
+          : "min-h-full"
+      }`}
+    >
       <SiteHeader
         page={page}
         onNavigate={onNavigate}
@@ -137,90 +143,69 @@ export function ConceptC({
       )}
 
       {page === "shop" && (
-        <section className="px-5 pb-20 pt-10 sm:px-8 md:px-12 md:pb-24">
-          <Breadcrumbs items={crumbs} tone="dark" />
-          <h1 className="font-[family-name:var(--font-instrument)] text-5xl md:text-7xl">
-            Lookbook
-          </h1>
-          <p className="mt-3 text-sm text-white/55">Sample catalogue only</p>
-          <div className="mt-12 columns-1 gap-8 sm:columns-2 lg:mt-14 lg:columns-3">
-            {products.map((p, i) => (
-              <button
+        <section className="flex h-[calc(100svh-4.5rem)] flex-col overflow-hidden px-4 pb-3 pt-3 sm:h-[calc(100svh-5rem)] sm:px-6 md:px-10 md:pb-4 md:pt-4">
+          <div className="shrink-0">
+            <Breadcrumbs items={crumbs} tone="dark" />
+            <h1 className="font-[family-name:var(--font-instrument)] text-2xl leading-none sm:text-3xl md:text-4xl">
+              Lookbook
+            </h1>
+            <p className="mt-1 text-xs text-white/55">Sample catalogue only</p>
+          </div>
+          <div className="mt-3 grid min-h-0 flex-1 grid-cols-2 gap-2 overflow-y-auto auto-rows-[minmax(7.5rem,1fr)] sm:grid-cols-3 md:mt-4 md:auto-rows-[minmax(0,1fr)] md:grid-cols-4 md:gap-3 md:overflow-hidden">
+            {products.map((p) => (
+              <ProductCard
                 key={p.id}
-                type="button"
-                className="mb-8 block w-full break-inside-avoid text-left"
-                onClick={() => onOpenProduct(p)}
-              >
-                <div
-                  className={`relative overflow-hidden ${
-                    i % 3 === 0
-                      ? "aspect-[3/4]"
-                      : i % 3 === 1
-                        ? "aspect-square"
-                        : "aspect-[4/5]"
-                  }`}
-                >
-                  <Image
-                    src={p.image}
-                    alt={p.name}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width:768px) 100vw, 33vw"
-                  />
-                </div>
-                <div className="mt-3 flex items-baseline justify-between gap-3">
-                  <p className="font-[family-name:var(--font-instrument)] text-xl">
-                    {p.name}
-                  </p>
-                  <span className="shrink-0 text-xs text-white/50">
-                    {formatSamplePrice(p.samplePriceInr)}
-                  </span>
-                </div>
-                <SampleBadge className="mt-1" />
-              </button>
+                product={p}
+                tone="dark"
+                layout="compact"
+                onOpen={onOpenProduct}
+              />
             ))}
           </div>
         </section>
       )}
 
       {page === "product" && (
-        <section className="md:min-h-[calc(100svh-4.25rem)]">
-          <div className="px-5 pt-6 sm:px-8 md:px-12">
+        <section className="flex h-[calc(100svh-4.5rem)] flex-col overflow-hidden sm:h-[calc(100svh-5rem)]">
+          <div className="shrink-0 px-4 pt-3 sm:px-6 md:px-10 md:pt-4">
             <Breadcrumbs items={crumbs} tone="dark" />
           </div>
-          <div className="grid md:min-h-[calc(100svh-7rem)] md:grid-cols-2">
-            <div className="relative min-h-[50vh] md:min-h-full">
+          <div className="grid min-h-0 flex-1 gap-0 overflow-y-auto md:grid-cols-2 md:overflow-hidden">
+            <div className="relative min-h-[38svh] md:min-h-0">
               <Image
                 src={activeProduct.image}
                 alt={activeProduct.name}
                 fill
                 className="object-cover"
-                sizes="50vw"
+                sizes="(max-width:768px) 100vw, 50vw"
                 priority
               />
             </div>
-            <div className="flex flex-col justify-center px-6 py-14 sm:px-10 md:px-14">
+            <div className="flex flex-col justify-center px-5 py-5 sm:px-8 md:overflow-hidden md:px-10 md:py-6">
               <p className="text-[11px] uppercase tracking-[0.28em] text-[#C4898E]">
                 Feature · {activeProduct.sku}
               </p>
-              <h1 className="mt-4 font-[family-name:var(--font-instrument)] text-4xl leading-none sm:text-5xl md:text-6xl">
+              <h1 className="mt-2 font-[family-name:var(--font-instrument)] text-2xl leading-none sm:text-3xl md:text-4xl">
                 {activeProduct.name}
               </h1>
-              <p className="mt-6 max-w-md text-sm leading-7 text-white/65">
+              <p className="mt-3 max-w-md text-sm leading-6 text-white/65 line-clamp-3 md:line-clamp-4">
                 {activeProduct.blurb}
               </p>
-              <div className="mt-8 flex items-center gap-3">
-                <p className="text-2xl">
+              <div className="mt-4 flex items-center gap-3">
+                <p className="text-xl">
                   {formatSamplePrice(activeProduct.samplePriceInr)}
                 </p>
                 <SampleBadge />
               </div>
-              <div className="mt-10 flex flex-wrap gap-3">
-                <WhatsAppButton sku={activeProduct.sku} />
+              <div className="mt-5 flex flex-wrap gap-2">
+                <WhatsAppButton
+                  sku={activeProduct.sku}
+                  className="!px-4 !py-2.5 !text-xs"
+                />
                 <button
                   type="button"
                   onClick={() => onBack("shop")}
-                  className="border border-white/25 px-5 py-3 text-sm"
+                  className="border border-white/25 px-4 py-2.5 text-xs"
                 >
                   Back
                 </button>
@@ -274,9 +259,11 @@ export function ConceptC({
         </section>
       )}
 
-      <footer className="border-t border-white/10 px-5 py-8 text-[11px] uppercase tracking-[0.2em] text-white/40 sm:px-8 md:px-12">
-        {brand.parentLine} · stakeholder preview
-      </footer>
+      {page !== "shop" && page !== "product" ? (
+        <footer className="border-t border-white/10 px-5 py-8 text-[11px] uppercase tracking-[0.2em] text-white/40 sm:px-8 md:px-12">
+          {brand.parentLine} · stakeholder preview
+        </footer>
+      ) : null}
     </div>
   );
 }

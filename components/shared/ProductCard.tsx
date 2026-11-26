@@ -24,7 +24,7 @@ export function ProductCard({
         : "text-[#161616]";
   const muted = tone === "light" ? "text-[#6B6B73]" : "text-white/65";
 
-  /** Shop grids — square image, readable meta; scrolls with the page */
+  /** Shop grids - square image, readable meta; scrolls with the page */
   if (layout === "compact") {
     return (
       <button

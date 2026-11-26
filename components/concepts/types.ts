@@ -5,7 +5,7 @@ export type ConceptProps = {
   onNavigate: (page: PreviewPage) => void;
   onBack: (fallback?: PreviewPage) => void;
   activeProduct: Product;
-  /** @deprecated Prefer onOpenProduct — kept for product selection without navigation */
+  /** @deprecated Prefer onOpenProduct - kept for product selection without navigation */
   onSelectProduct: (product: Product) => void;
   onOpenProduct: (product: Product) => void;
 };

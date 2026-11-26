@@ -65,7 +65,7 @@ type Props = {
   onBack: () => void;
 };
 
-/** Full silver rates page — today + last 10 days (Phase 1 sample) */
+/** Full silver rates page - today + last 10 days (Phase 1 sample) */
 export function SilverRatesView({
   tone = "dark",
   crumbs,

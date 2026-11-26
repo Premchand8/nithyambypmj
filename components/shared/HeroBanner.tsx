@@ -15,7 +15,7 @@ type Props = {
 };
 
 /**
- * First viewport hero — 100dvh/svh tall, but does not lock page scroll.
+ * First viewport hero - 100dvh/svh tall, but does not lock page scroll.
  * Header overlays (absolute); content below this section scrolls normally.
  */
 export function HeroBanner({

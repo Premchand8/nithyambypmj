@@ -1,6 +1,6 @@
 /**
  * Indicative Hyderabad silver rates for Phase 1 preview.
- * Not live market data — labelled as sample in the UI.
+ * Not live market data - labelled as sample in the UI.
  */
 
 export type SilverDayRate = {
@@ -14,7 +14,7 @@ export type SilverDayRate = {
 
 const STORAGE_SEED = "nithyam-silver-sample-v1";
 
-/** Slight day-to-day movement around a Hyderabad-oriented mid band (~₹100–108/g). */
+/** Slight day-to-day movement around a Hyderabad-oriented mid band (~₹100-108/g). */
 function buildSampleSeries(anchor: Date): SilverDayRate[] {
   const base = 104.5;
   const wobble = [0.4, -0.6, 0.2, 1.1, -0.3, 0.8, -0.9, 0.5, -0.2, 0.7, 0];
@@ -69,7 +69,7 @@ export function formatInr(amount: number, fractionDigits = 0) {
   })}`;
 }
 
-/** e.g. 26 Nov 2026 — easy for Indian shoppers to scan */
+/** e.g. 26 Nov 2026 - easy for Indian shoppers to scan */
 export function formatDisplayDate(iso: string) {
   const d = new Date(`${iso}T12:00:00`);
   const day = d.getDate();

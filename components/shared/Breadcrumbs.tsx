@@ -15,7 +15,7 @@ type CrumbLabels = {
   contact: string;
 };
 
-/** Home › Shop › Product (and About / Contact / Silver) — no crumbs on home */
+/** Home › Shop › Product (and About / Contact / Silver) - no crumbs on home */
 export function buildPageCrumbs(options: {
   page: PreviewPage;
   labels: CrumbLabels;
@@ -87,7 +87,7 @@ type Props = {
   className?: string;
 };
 
-/** Trail for Shop / Product / About / Contact — Home is always the root crumb */
+/** Trail for Shop / Product / About / Contact - Home is always the root crumb */
 export function Breadcrumbs({ items, tone = "light", className = "" }: Props) {
   if (items.length === 0) return null;
   const styles = toneStyles[tone];

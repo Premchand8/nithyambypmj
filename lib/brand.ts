@@ -1,6 +1,6 @@
 /**
  * Brand tokens derived from Nithyam logos + product photography
- * (ToWebP pack and chat attachments — same imagery).
+ * (ToWebP pack and chat attachments - same imagery).
  *
  * Photo direction confirmed: forest/emerald studio backdrops, oxidised silver,
  * soft rose/pink florals, warm gold bokeh, occasional ruby/emerald gem accents.
@@ -39,7 +39,7 @@ export const brand = {
     gemEmerald: "#1F6B4F",
   },
   /**
-   * Per-concept palettes (A–D) — distinct emphases from the same photo set.
+   * Per-concept palettes (A-D) - distinct emphases from the same photo set.
    * Not just hue swaps: each concept leans on different layout + accent pairing.
    */
   conceptPalettes: {

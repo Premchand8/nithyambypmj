@@ -13,7 +13,7 @@ export type Product = {
   sku: string;
   name: string;
   image: string;
-  /** Sample price for preview only — not live catalogue pricing */
+  /** Sample price for preview only - not live catalogue pricing */
   samplePriceInr: number;
   blurb: string;
 };

@@ -29,7 +29,7 @@ const crumbLabels = {
   contact: "Contact",
 };
 
-/** Persona B — Modern Minimal: sticky light nav, split 100svh hero, airy grids */
+/** Persona B - Modern Minimal: sticky light nav, split 100svh hero, airy grids */
 export function ConceptB({
   page,
   onNavigate,
@@ -61,7 +61,7 @@ export function ConceptB({
 
       {page === "home" && (
         <>
-          {/* Exact viewport split — header overlays; one screen on mobile, no overflow */}
+          {/* Exact viewport split - header overlays; one screen on mobile, no overflow */}
           <section className="grid h-[100svh] min-h-[100svh] w-full grid-rows-[minmax(0,1fr)_minmax(0,1.15fr)] overflow-hidden supports-[height:100dvh]:h-[100dvh] supports-[height:100dvh]:min-h-[100dvh] lg:grid-cols-2 lg:grid-rows-none">
             <div className="relative flex min-h-0 flex-col justify-end bg-[#FAF8F7] px-6 pb-10 pt-24 sm:px-10 sm:pb-14 sm:pt-28 lg:px-16 lg:pb-20 xl:px-20">
               <h1 className="max-w-md font-[family-name:var(--font-outfit)] text-3xl font-light leading-[1.08] tracking-tight text-[#0A0A0A] sm:text-4xl md:text-5xl xl:text-6xl">
@@ -70,7 +70,7 @@ export function ConceptB({
                 simply shown.
               </h1>
               <p className="mt-4 max-w-sm text-sm leading-relaxed text-[#5A5A63] sm:mt-5">
-                Oxidised finishes, soft rose light — jewellery without the noise.
+                Oxidised finishes, soft rose light - jewellery without the noise.
               </p>
               <button
                 type="button"
@@ -83,7 +83,7 @@ export function ConceptB({
             <div className="relative min-h-0 overflow-hidden">
               <Image
                 src={heroImages.B}
-                alt="Polished silver bangles on linen — lifestyle"
+                alt="Polished silver bangles on linen - lifestyle"
                 fill
                 priority
                 className="object-cover"
@@ -127,7 +127,7 @@ export function ConceptB({
             <div className="relative min-h-[44svh] overflow-hidden lg:min-h-full">
               <Image
                 src={heroImages.BProduct}
-                alt="Nithyam silver idol — close crop"
+                alt="Nithyam silver idol - close crop"
                 fill
                 className="object-cover"
                 style={{ objectPosition: "center 28%" }}

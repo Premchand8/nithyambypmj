@@ -24,7 +24,7 @@ const instrument = Instrument_Serif({
 });
 
 export const metadata: Metadata = {
-  title: "Nithyam by PMJ Jewels — Phase 1 Design Concepts",
+  title: "Nithyam by PMJ Jewels - Phase 1 Design Concepts",
   description:
     "Internal stakeholder preview of four homepage concepts for Nithyam handcrafted silver jewellery by PMJ Jewels.",
 };

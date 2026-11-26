@@ -31,7 +31,7 @@ const crumbLabels = {
   contact: "Contact",
 };
 
-/** Persona C — Premium Editorial: magazine masthead, oversized type, lookbook */
+/** Persona C - Premium Editorial: magazine masthead, oversized type, lookbook */
 export function ConceptC({
   page,
   onNavigate,
@@ -65,7 +65,7 @@ export function ConceptC({
         <>
           <HeroBanner
             src={heroImages.C}
-            alt="Nithyam divine trinity — editorial hero"
+            alt="Nithyam divine trinity - editorial hero"
             position="center 48%"
             overlayClassName="bg-gradient-to-t from-black via-black/45 to-black/30"
           >
@@ -76,7 +76,7 @@ export function ConceptC({
                 chapter.
               </h1>
               <p className="mt-5 max-w-md text-sm leading-relaxed text-white/70 md:text-base">
-                Handcrafted silver jewellery by PMJ Jewels — photography first.
+                Handcrafted silver jewellery by PMJ Jewels - photography first.
               </p>
               <button
                 type="button"
@@ -117,7 +117,7 @@ export function ConceptC({
           <section className="relative min-h-[70svh] overflow-hidden">
             <Image
               src={heroImages.CAlt}
-              alt="Silver necklace on silk — editorial accent"
+              alt="Silver necklace on silk - editorial accent"
               fill
               className="object-cover"
               style={{ objectPosition: "center 40%" }}

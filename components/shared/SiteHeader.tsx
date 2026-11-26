@@ -40,7 +40,7 @@ const toneStyles: Record<
   }
 > = {
   overlay: {
-    /* absolute overlay — must not consume layout height above 100dvh heroes */
+    /* absolute overlay - must not consume layout height above 100dvh heroes */
     bar: "pointer-events-none absolute inset-x-0 top-0 z-40 bg-gradient-to-b from-black/45 via-black/15 to-transparent",
     link: "text-white/80 hover:text-white",
     linkActive: "text-white",
@@ -118,7 +118,7 @@ export function SiteHeader({
 
   return (
     <header className={`${styles.bar} ${className}`}>
-      {/* Mobile: 3-column grid — silver | full logo | tools (no overlap) */}
+      {/* Mobile: 3-column grid - silver | full logo | tools (no overlap) */}
       <div
         className={`mx-auto grid h-[4.5rem] w-full max-w-[1400px] grid-cols-[minmax(4.5rem,1fr)_auto_minmax(4.5rem,1fr)] items-center gap-1.5 px-2.5 sm:h-20 sm:gap-2 sm:px-4 lg:hidden ${pe}`}
       >

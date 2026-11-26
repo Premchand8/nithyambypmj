@@ -12,7 +12,7 @@ type Props = {
 };
 
 /**
- * Silver rate trigger — opens the dedicated silver rates page.
+ * Silver rate trigger - opens the dedicated silver rates page.
  * Desktop: labelled control. Mobile: compact price chip.
  */
 export function SilverRateControl({

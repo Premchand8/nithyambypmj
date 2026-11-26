@@ -9,7 +9,7 @@ type Props = {
   tone?: "light" | "dark";
 };
 
-/** Subtle internal switcher — sits beside bag; not public-site chrome */
+/** Subtle internal switcher - sits beside bag; not public-site chrome */
 export function DesignSwitcher({ tone = "dark" }: Props) {
   const {
     activeDesign,

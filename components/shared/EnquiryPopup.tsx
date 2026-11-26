@@ -206,7 +206,7 @@ export function EnquiryPopup({ active, design }: Props) {
               Looking for the right silver piece?
             </h2>
             <p className={`mt-2 text-sm leading-relaxed ${tone.muted}`}>
-              Leave your details and we shall call you back — no obligation.
+              Leave your details and we shall call you back - no obligation.
             </p>
 
             <form className="mt-5 space-y-3" onSubmit={onSubmit}>
@@ -272,7 +272,7 @@ export function EnquiryPopup({ active, design }: Props) {
                 Send enquiry
               </button>
               <p className={`text-center text-[10px] leading-relaxed ${tone.muted}`}>
-                Preview only — details are not stored on a live server yet.
+                Preview only - details are not stored on a live server yet.
               </p>
             </form>
           </>

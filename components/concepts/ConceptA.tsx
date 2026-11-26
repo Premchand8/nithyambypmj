@@ -25,7 +25,7 @@ const links = [
   { id: "contact" as const, label: "Contact" },
 ];
 
-/** Persona A — Classic Luxury: centred maison, gold on black, full-viewport hero */
+/** Persona A - Classic Luxury: centred maison, gold on black, full-viewport hero */
 const crumbLabels = {
   shop: "Collection",
   about: "Our story",
@@ -65,7 +65,7 @@ export function ConceptA({
         <>
           <HeroBanner
             src={heroImages.A}
-            alt="Nithyam silver craft — Krishna jhoola detail"
+            alt="Nithyam silver craft - Krishna jhoola detail"
             position="center 40%"
             overlayClassName="bg-[radial-gradient(ellipse_at_center,rgba(10,10,10,0.15)_0%,rgba(10,10,10,0.72)_75%)]"
           >
@@ -224,7 +224,7 @@ export function ConceptA({
                 Nithyam
               </h1>
               <p className="mt-6 text-sm leading-8 text-white/70">
-                Nithyam is handcrafted silver jewellery by PMJ Jewels — crafted with care
+                Nithyam is handcrafted silver jewellery by PMJ Jewels - crafted with care
                 for the sacred home. We will share more of our story here soon.
               </p>
             </div>

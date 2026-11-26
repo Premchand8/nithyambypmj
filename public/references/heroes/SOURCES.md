@@ -4,7 +4,7 @@
 
 | Design | Role | File | Source |
 |--------|------|------|--------|
-| A Classic Luxury | Hero | `brand-hero-jhoola.jpg` | Brand crop from `04.webp` (kept — Prem-approved) |
+| A Classic Luxury | Hero | `brand-hero-jhoola.jpg` | Brand crop from `04.webp` (kept - Prem-approved) |
 | B Modern Minimal | Split hero | `hero-b-modern-minimal.jpg` | AI-generated lifestyle (silver bangles on linen; brand palette) |
 | B Modern Minimal | Side panel | `brand-b-side-idol.jpg` | Brand crop from `SIDL909767.webp` (tighter landscape fill) |
 | C Premium Editorial | Hero | `hero-c-editorial-fill.jpg` | AI-generated from brand trinity ref (`01.webp`) |
@@ -16,11 +16,11 @@
 
 ## Additional brand landscape crops
 
-- `brand-c-trinity-fill.jpg` / `brand-c-trinity-wide.jpg` — from `01.webp`
-- `brand-d-jhoola-wide.jpg` — from `04.webp`
-- `brand-b-side-alt.jpg` — from `SIDL923050.webp`
-- `brand-side-accent.jpg` — from `SACS913290.webp`
-- `brand-hero-*.jpg` — earlier landscape crops (A hero still in use)
+- `brand-c-trinity-fill.jpg` / `brand-c-trinity-wide.jpg` - from `01.webp`
+- `brand-d-jhoola-wide.jpg` - from `04.webp`
+- `brand-b-side-alt.jpg` - from `SIDL923050.webp`
+- `brand-side-accent.jpg` - from `SACS913290.webp`
+- `brand-hero-*.jpg` - earlier landscape crops (A hero still in use)
 
 ## Royalty-free extras (Unsplash License)
 

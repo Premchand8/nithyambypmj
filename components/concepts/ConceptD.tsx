@@ -50,7 +50,7 @@ function LotusMark({ className = "" }: { className?: string }) {
   );
 }
 
-/** Persona D — Contemporary Indian: forest immersion, lotus, storytelling sections */
+/** Persona D - Contemporary Indian: forest immersion, lotus, storytelling sections */
 export function ConceptD({
   page,
   onNavigate,
@@ -93,7 +93,7 @@ export function ConceptD({
                 Silver for the home mandir
               </h1>
               <p className="mt-4 max-w-md text-sm leading-relaxed text-[#D5D8C8] md:text-base">
-                Handcrafted silver jewellery by PMJ Jewels — rooted in ritual, finished for
+                Handcrafted silver jewellery by PMJ Jewels - rooted in ritual, finished for
                 today.
               </p>
               <button
@@ -106,12 +106,12 @@ export function ConceptD({
             </div>
           </HeroBanner>
 
-          {/* Storytelling: image left / copy right — not a product grid shell */}
+          {/* Storytelling: image left / copy right - not a product grid shell */}
           <section className="grid lg:grid-cols-2">
             <div className="relative min-h-[52svh] overflow-hidden lg:min-h-[80svh]">
               <Image
                 src={heroImages.D}
-                alt="Nithyam silver swans — sculptural detail"
+                alt="Nithyam silver swans - sculptural detail"
                 fill
                 className="object-cover"
                 style={{ objectPosition: "center 40%" }}
@@ -123,7 +123,7 @@ export function ConceptD({
                 Sacred and sculptural
               </h2>
               <p className="mt-5 max-w-md text-sm leading-7 text-[#D5D8C8]/90">
-                Forest studio light, oxidised silver, rose petals at the edge of the frame —
+                Forest studio light, oxidised silver, rose petals at the edge of the frame -
                 the photography sets the colour story for this concept.
               </p>
               <button
@@ -265,7 +265,7 @@ export function ConceptD({
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-sm leading-7 text-[#D5D8C8]/90">
               Nithyam is handcrafted silver jewellery by PMJ Jewels. The lotus wordmark and
-              ceremonial photography set the tone — we will share more of our craft story
+              ceremonial photography set the tone - we will share more of our craft story
               here soon.
             </p>
             <div className="relative mx-auto mt-12 aspect-[16/9] max-w-3xl overflow-hidden border border-[#E8C17A]/20">

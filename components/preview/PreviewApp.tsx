@@ -43,7 +43,7 @@ function PreviewCanvas() {
   );
 }
 
-/** Phase 1 preview — no top stakeholder chrome; switcher lives in site header */
+/** Phase 1 preview - no top stakeholder chrome; switcher lives in site header */
 export function PreviewApp() {
   return (
     <PreviewProvider>

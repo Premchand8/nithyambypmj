@@ -136,17 +136,17 @@ export const featuredProducts = products.slice(0, 6);
 
 /** Full-viewport heroes: strong full-bleed brand crops + lifestyle (see heroes/SOURCES) */
 export const heroImages = {
-  /** Design A — Classic Luxury (kept: strong brand jhoola crop) */
+  /** Design A - Classic Luxury (kept: strong brand jhoola crop) */
   A: "/references/heroes/brand-hero-jhoola.jpg",
-  /** Design B — Modern Minimal: airy silver-on-linen lifestyle */
+  /** Design B - Modern Minimal: airy silver-on-linen lifestyle */
   B: "/references/heroes/hero-b-modern-minimal.jpg",
   /** Design B side panel: filled brand idol crop */
   BProduct: "/references/heroes/brand-b-side-idol.jpg",
-  /** Design C — Premium Editorial: filled trinity with cinematic light */
+  /** Design C - Premium Editorial: filled trinity with cinematic light */
   C: "/references/heroes/hero-c-editorial-fill.jpg",
   /** Design C mid-band: silver necklace editorial on silk */
   CAlt: "/references/heroes/hero-c-alt-silver.jpg",
-  /** Design D side story: silver swans — strong subject fill */
+  /** Design D side story: silver swans - strong subject fill */
   D: "/references/heroes/brand-side-lifestyle.jpg",
   /** Design D hero: mandir lifestyle jhoola (marigolds, diyas, velvet) */
   DAlt: "/references/heroes/hero-d-mandir-lifestyle.jpg",
@@ -157,7 +157,7 @@ export const heroImages = {
 export const sampleTestimonials = [
   {
     quote:
-      "The oxidised finish feels like an heirloom — quiet luxury for our pooja room.",
+      "The oxidised finish feels like an heirloom - quiet luxury for our pooja room.",
     name: "Ananya R.",
     note: "Sample testimonial",
   },
@@ -169,7 +169,7 @@ export const sampleTestimonials = [
   },
   {
     quote:
-      "A thoughtful gift — the craftsmanship shows in every petal and chain.",
+      "A thoughtful gift - the craftsmanship shows in every petal and chain.",
     name: "Meera S.",
     note: "Sample testimonial",
   },
@@ -183,6 +183,6 @@ export function whatsappEnquiryUrl(sku?: string) {
   const text = sku
     ? `Namaste Nithyam, I would like to enquire about ${sku}.`
     : "Namaste Nithyam, I would like to enquire about your silver jewellery collection.";
-  // Dummy preview number (+91 98765 43210) — replace with live WhatsApp when ready
+  // Dummy preview number (+91 98765 43210) - replace with live WhatsApp when ready
   return `https://wa.me/919876543210?text=${encodeURIComponent(text)}`;
 }

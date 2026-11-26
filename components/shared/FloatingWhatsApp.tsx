@@ -4,7 +4,7 @@ import Image from "next/image";
 import { brand } from "@/lib/brand";
 import { whatsappEnquiryUrl } from "@/lib/products";
 
-/** Prem’s WhatsApp PNG as-is — logo only, no extra chrome */
+/** Prem’s WhatsApp PNG as-is - logo only, no extra chrome */
 export function FloatingWhatsApp() {
   return (
     <a

@@ -1,6 +1,12 @@
 export type DesignId = "A" | "B" | "C" | "D";
 
-export type PreviewPage = "home" | "shop" | "product" | "about" | "contact";
+export type PreviewPage =
+  | "home"
+  | "shop"
+  | "product"
+  | "about"
+  | "contact"
+  | "silver";
 
 export type Product = {
   id: string;

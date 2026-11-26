@@ -9,7 +9,14 @@ export type PreviewHistoryState = {
   idx: number;
 };
 
-const PAGES: PreviewPage[] = ["home", "shop", "product", "about", "contact"];
+const PAGES: PreviewPage[] = [
+  "home",
+  "shop",
+  "product",
+  "about",
+  "contact",
+  "silver",
+];
 const DESIGNS: DesignId[] = ["A", "B", "C", "D"];
 
 export function isPreviewPage(value: string | null): value is PreviewPage {

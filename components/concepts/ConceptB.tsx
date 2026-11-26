@@ -12,6 +12,7 @@ import { Breadcrumbs, buildPageCrumbs } from "@/components/shared/Breadcrumbs";
 import { ProductCard } from "@/components/shared/ProductCard";
 import { SampleBadge } from "@/components/shared/SampleBadge";
 import { SiteHeader } from "@/components/shared/SiteHeader";
+import { SilverRatesView } from "@/components/shared/SilverRatesView";
 import { WhatsAppButton } from "@/components/shared/WhatsAppButton";
 import type { ConceptProps } from "./types";
 
@@ -267,6 +268,14 @@ export function ConceptB({
             WhatsApp {brand.placeholders.whatsappDisplay} (sample number)
           </p>
         </section>
+      )}
+
+      {page === "silver" && (
+        <SilverRatesView
+          tone="light"
+          crumbs={crumbs}
+          onBack={() => onBack("home")}
+        />
       )}
 
       {page !== "product" ? (

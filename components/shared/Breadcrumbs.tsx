@@ -15,7 +15,7 @@ type CrumbLabels = {
   contact: string;
 };
 
-/** Home › Shop › Product (and About / Contact) — no crumbs on home */
+/** Home › Shop › Product (and About / Contact / Silver) — no crumbs on home */
 export function buildPageCrumbs(options: {
   page: PreviewPage;
   labels: CrumbLabels;
@@ -42,6 +42,9 @@ export function buildPageCrumbs(options: {
   }
   if (page === "about") {
     return [home, { label: labels.about }];
+  }
+  if (page === "silver") {
+    return [home, { label: "Silver rate" }];
   }
   return [home, { label: labels.contact }];
 }

@@ -14,6 +14,7 @@ import { HeroBanner } from "@/components/shared/HeroBanner";
 import { ProductCard } from "@/components/shared/ProductCard";
 import { SampleBadge } from "@/components/shared/SampleBadge";
 import { SiteHeader } from "@/components/shared/SiteHeader";
+import { SilverRatesView } from "@/components/shared/SilverRatesView";
 import { WhatsAppButton } from "@/components/shared/WhatsAppButton";
 import type { ConceptProps } from "./types";
 
@@ -253,6 +254,14 @@ export function ConceptC({
           </div>
           <WhatsAppButton className="mt-10 w-fit" />
         </section>
+      )}
+
+      {page === "silver" && (
+        <SilverRatesView
+          tone="dark"
+          crumbs={crumbs}
+          onBack={() => onBack("home")}
+        />
       )}
 
       {page !== "product" ? (

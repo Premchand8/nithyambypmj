@@ -9,6 +9,7 @@ import {
   products,
   sampleTestimonials,
 } from "@/lib/products";
+import { Breadcrumbs, buildPageCrumbs } from "@/components/shared/Breadcrumbs";
 import { HeroBanner } from "@/components/shared/HeroBanner";
 import { ProductCard } from "@/components/shared/ProductCard";
 import { SampleBadge } from "@/components/shared/SampleBadge";
@@ -24,13 +25,26 @@ const links = [
 ];
 
 /** Persona A — Classic Luxury: centred maison, gold on black, full-viewport hero */
+const crumbLabels = {
+  shop: "Collection",
+  about: "Our story",
+  contact: "Contact",
+};
+
 export function ConceptA({
   page,
   onNavigate,
+  onBack,
   activeProduct,
-  onSelectProduct,
+  onOpenProduct,
 }: ConceptProps) {
   const headerTone = page === "home" ? "overlay" : "solid-dark";
+  const crumbs = buildPageCrumbs({
+    page,
+    labels: crumbLabels,
+    productName: activeProduct.name,
+    onNavigate,
+  });
 
   return (
     <div className="relative min-h-full bg-[#0A0A0A] text-[#F4F4F6] [--font-display:var(--font-cormorant)]">
@@ -82,10 +96,7 @@ export function ConceptA({
                   key={p.id}
                   product={p}
                   tone="dark"
-                  onOpen={(item) => {
-                    onSelectProduct(item);
-                    onNavigate("product");
-                  }}
+                  onOpen={onOpenProduct}
                 />
               ))}
             </div>
@@ -107,6 +118,7 @@ export function ConceptA({
       {page === "shop" && (
         <section className="px-5 pb-20 pt-10 md:px-10 md:pb-24">
           <div className="mx-auto max-w-6xl text-center">
+            <Breadcrumbs items={crumbs} tone="gold" className="justify-center text-left sm:text-center [&_ol]:justify-center" />
             <p className="text-[10px] uppercase tracking-[0.32em] text-[#B8883A]">
               Catalogue
             </p>
@@ -119,10 +131,7 @@ export function ConceptA({
                   key={p.id}
                   product={p}
                   tone="dark"
-                  onOpen={(item) => {
-                    onSelectProduct(item);
-                    onNavigate("product");
-                  }}
+                  onOpen={onOpenProduct}
                 />
               ))}
             </div>
@@ -132,7 +141,10 @@ export function ConceptA({
 
       {page === "product" && (
         <section className="px-5 pb-20 pt-10 md:px-10 md:pb-24">
-          <div className="mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-2 lg:gap-12">
+          <div className="mx-auto max-w-6xl">
+            <Breadcrumbs items={crumbs} tone="gold" />
+          </div>
+          <div className="mx-auto mt-2 grid max-w-6xl items-center gap-10 lg:grid-cols-2 lg:gap-12">
             <div className="relative aspect-[4/5] overflow-hidden border border-[#B8883A]/25">
               <Image
                 src={activeProduct.image}
@@ -163,10 +175,10 @@ export function ConceptA({
                 <WhatsAppButton sku={activeProduct.sku} />
                 <button
                   type="button"
-                  onClick={() => onNavigate("shop")}
+                  onClick={() => onBack("shop")}
                   className="border border-white/25 px-5 py-3 text-sm text-white/80"
                 >
-                  Back to collection
+                  Back
                 </button>
               </div>
             </div>
@@ -176,7 +188,10 @@ export function ConceptA({
 
       {page === "about" && (
         <section className="px-5 pb-20 pt-10 md:px-10 md:pb-24">
-          <div className="mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-2 lg:gap-12">
+          <div className="mx-auto max-w-6xl">
+            <Breadcrumbs items={crumbs} tone="gold" />
+          </div>
+          <div className="mx-auto mt-2 grid max-w-6xl items-center gap-10 lg:grid-cols-2 lg:gap-12">
             <div className="relative min-h-[22rem] overflow-hidden sm:min-h-[28rem]">
               <Image
                 src={heroImages.about}
@@ -204,6 +219,7 @@ export function ConceptA({
 
       {page === "contact" && (
         <section className="flex min-h-[70svh] flex-col items-center justify-center px-5 py-20 text-center md:px-10">
+          <Breadcrumbs items={crumbs} tone="gold" className="[&_ol]:justify-center" />
           <p className="text-[10px] uppercase tracking-[0.28em] text-[#B8883A]">
             Get in touch
           </p>

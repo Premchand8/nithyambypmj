@@ -14,15 +14,19 @@ function PreviewCanvas() {
     activeDesign,
     page,
     setPage,
+    goBack,
     activeProduct,
     setActiveProduct,
+    openProduct,
   } = usePreview();
 
   const conceptProps = {
     page,
     onNavigate: setPage,
+    onBack: goBack,
     activeProduct,
     onSelectProduct: setActiveProduct,
+    onOpenProduct: openProduct,
   };
 
   return (

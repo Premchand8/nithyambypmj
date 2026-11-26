@@ -8,6 +8,7 @@ import {
   heroImages,
   products,
 } from "@/lib/products";
+import { Breadcrumbs, buildPageCrumbs } from "@/components/shared/Breadcrumbs";
 import { ProductCard } from "@/components/shared/ProductCard";
 import { SampleBadge } from "@/components/shared/SampleBadge";
 import { SiteHeader } from "@/components/shared/SiteHeader";
@@ -21,14 +22,27 @@ const links = [
   { id: "contact" as const, label: "Contact" },
 ];
 
+const crumbLabels = {
+  shop: "Shop",
+  about: "About",
+  contact: "Contact",
+};
+
 /** Persona B — Modern Minimal: sticky light nav, split 100svh hero, airy grids */
 export function ConceptB({
   page,
   onNavigate,
+  onBack,
   activeProduct,
-  onSelectProduct,
+  onOpenProduct,
 }: ConceptProps) {
   const headerTone = page === "home" ? "overlay-light" : "solid-light";
+  const crumbs = buildPageCrumbs({
+    page,
+    labels: crumbLabels,
+    productName: activeProduct.name,
+    onNavigate,
+  });
 
   return (
     <div className="relative min-h-full bg-[#FAF8F7] text-[#161616] [--font-display:var(--font-outfit)]">
@@ -98,10 +112,7 @@ export function ConceptB({
                   key={p.id}
                   product={p}
                   layout="minimal"
-                  onOpen={(item) => {
-                    onSelectProduct(item);
-                    onNavigate("product");
-                  }}
+                  onOpen={onOpenProduct}
                 />
               ))}
             </div>
@@ -139,6 +150,7 @@ export function ConceptB({
 
       {page === "shop" && (
         <section className="mx-auto max-w-6xl px-5 py-14 md:px-8 md:py-16">
+          <Breadcrumbs items={crumbs} tone="light" />
           <h1 className="font-[family-name:var(--font-outfit)] text-4xl font-light">
             Shop
           </h1>
@@ -149,10 +161,7 @@ export function ConceptB({
                 key={p.id}
                 product={p}
                 layout="minimal"
-                onOpen={(item) => {
-                  onSelectProduct(item);
-                  onNavigate("product");
-                }}
+                onOpen={onOpenProduct}
               />
             ))}
           </div>
@@ -160,42 +169,45 @@ export function ConceptB({
       )}
 
       {page === "product" && (
-        <section className="mx-auto grid max-w-6xl gap-8 px-5 py-12 md:grid-cols-12 md:gap-10 md:px-8 md:py-14">
-          <div className="relative aspect-square bg-[#ECECEF] md:col-span-7">
-            <Image
-              src={activeProduct.image}
-              alt={activeProduct.name}
-              fill
-              className="object-cover"
-              sizes="(max-width:768px) 100vw, 60vw"
-              priority
-            />
-          </div>
-          <div className="flex flex-col justify-center md:col-span-5">
-            <p className="text-[11px] uppercase tracking-[0.18em] text-[#9A9AA3]">
-              {activeProduct.sku}
-            </p>
-            <h1 className="mt-3 font-[family-name:var(--font-outfit)] text-3xl font-light">
-              {activeProduct.name}
-            </h1>
-            <p className="mt-4 text-sm leading-relaxed text-[#5A5A63]">
-              {activeProduct.blurb}
-            </p>
-            <div className="mt-6 flex items-center gap-2">
-              <p className="text-xl">
-                {formatSamplePrice(activeProduct.samplePriceInr)}
-              </p>
-              <SampleBadge />
+        <section className="mx-auto max-w-6xl px-5 py-12 md:px-8 md:py-14">
+          <Breadcrumbs items={crumbs} tone="light" />
+          <div className="mt-2 grid gap-8 md:grid-cols-12 md:gap-10">
+            <div className="relative aspect-square bg-[#ECECEF] md:col-span-7">
+              <Image
+                src={activeProduct.image}
+                alt={activeProduct.name}
+                fill
+                className="object-cover"
+                sizes="(max-width:768px) 100vw, 60vw"
+                priority
+              />
             </div>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <WhatsAppButton sku={activeProduct.sku} />
-              <button
-                type="button"
-                onClick={() => onNavigate("shop")}
-                className="border border-[#D0D0D6] px-5 py-3 text-sm"
-              >
-                View all pieces
-              </button>
+            <div className="flex flex-col justify-center md:col-span-5">
+              <p className="text-[11px] uppercase tracking-[0.18em] text-[#9A9AA3]">
+                {activeProduct.sku}
+              </p>
+              <h1 className="mt-3 font-[family-name:var(--font-outfit)] text-3xl font-light">
+                {activeProduct.name}
+              </h1>
+              <p className="mt-4 text-sm leading-relaxed text-[#5A5A63]">
+                {activeProduct.blurb}
+              </p>
+              <div className="mt-6 flex items-center gap-2">
+                <p className="text-xl">
+                  {formatSamplePrice(activeProduct.samplePriceInr)}
+                </p>
+                <SampleBadge />
+              </div>
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+                <WhatsAppButton sku={activeProduct.sku} />
+                <button
+                  type="button"
+                  onClick={() => onBack("shop")}
+                  className="border border-[#D0D0D6] px-5 py-3 text-sm"
+                >
+                  Back
+                </button>
+              </div>
             </div>
           </div>
         </section>
@@ -203,6 +215,7 @@ export function ConceptB({
 
       {page === "about" && (
         <section className="mx-auto max-w-2xl px-5 py-20 md:px-8 md:py-24">
+          <Breadcrumbs items={crumbs} tone="light" />
           <h1 className="font-[family-name:var(--font-outfit)] text-4xl font-light">
             About us
           </h1>
@@ -215,6 +228,7 @@ export function ConceptB({
 
       {page === "contact" && (
         <section className="mx-auto max-w-md px-5 py-20 md:px-8 md:py-24">
+          <Breadcrumbs items={crumbs} tone="light" />
           <h1 className="font-[family-name:var(--font-outfit)] text-4xl font-light">
             Contact us
           </h1>

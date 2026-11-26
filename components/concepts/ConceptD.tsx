@@ -9,6 +9,7 @@ import {
   products,
   sampleTestimonials,
 } from "@/lib/products";
+import { Breadcrumbs, buildPageCrumbs } from "@/components/shared/Breadcrumbs";
 import { HeroBanner } from "@/components/shared/HeroBanner";
 import { ProductCard } from "@/components/shared/ProductCard";
 import { SampleBadge } from "@/components/shared/SampleBadge";
@@ -22,6 +23,12 @@ const links = [
   { id: "about" as const, label: "Our Craft" },
   { id: "contact" as const, label: "Visit" },
 ];
+
+const crumbLabels = {
+  shop: "Collection",
+  about: "Our Craft",
+  contact: "Visit",
+};
 
 function LotusMark({ className = "" }: { className?: string }) {
   return (
@@ -46,10 +53,17 @@ function LotusMark({ className = "" }: { className?: string }) {
 export function ConceptD({
   page,
   onNavigate,
+  onBack,
   activeProduct,
-  onSelectProduct,
+  onOpenProduct,
 }: ConceptProps) {
   const headerTone = page === "home" ? "overlay" : "solid-forest";
+  const crumbs = buildPageCrumbs({
+    page,
+    labels: crumbLabels,
+    productName: activeProduct.name,
+    onNavigate,
+  });
 
   return (
     <div className="relative min-h-full bg-[#1B3022] text-[#F4F4F6] [--font-display:var(--font-cormorant)]">
@@ -133,10 +147,7 @@ export function ConceptD({
                     key={p.id}
                     product={p}
                     tone="forest"
-                    onOpen={(item) => {
-                      onSelectProduct(item);
-                      onNavigate("product");
-                    }}
+                    onOpen={onOpenProduct}
                   />
                 ))}
               </div>
@@ -159,6 +170,11 @@ export function ConceptD({
       {page === "shop" && (
         <section className="px-5 pb-20 pt-10 md:px-10 md:pb-24">
           <div className="mx-auto max-w-6xl">
+            <Breadcrumbs
+              items={crumbs}
+              tone="forest"
+              className="[&_ol]:justify-center"
+            />
             <div className="text-center">
               <h1 className="font-[family-name:var(--font-cormorant)] text-4xl text-[#F8F4EC] md:text-5xl">
                 Our collection
@@ -171,10 +187,7 @@ export function ConceptD({
                   key={p.id}
                   product={p}
                   tone="forest"
-                  onOpen={(item) => {
-                    onSelectProduct(item);
-                    onNavigate("product");
-                  }}
+                  onOpen={onOpenProduct}
                 />
               ))}
             </div>
@@ -184,45 +197,48 @@ export function ConceptD({
 
       {page === "product" && (
         <section className="px-5 pb-20 pt-10 md:px-10 md:pb-24">
-          <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-2">
-            <div className="relative aspect-[4/5] overflow-hidden border border-[#E8C17A]/25">
-              <Image
-                src={activeProduct.image}
-                alt={activeProduct.name}
-                fill
-                className="object-cover"
-                sizes="(max-width:768px) 100vw, 50vw"
-                priority
-              />
-            </div>
-            <div className="flex flex-col justify-center">
-              <p className="text-[11px] uppercase tracking-[0.22em] text-[#E8C17A]">
-                {activeProduct.sku}
-              </p>
-              <h1 className="mt-3 font-[family-name:var(--font-cormorant)] text-4xl text-[#F8F4EC] md:text-5xl">
-                {activeProduct.name}
-              </h1>
-              <p className="mt-5 text-sm leading-7 text-[#D5D8C8]/85">
-                {activeProduct.blurb}
-              </p>
-              <div className="mt-6 flex items-center gap-3">
-                <p className="text-2xl text-[#F8F4EC]">
-                  {formatSamplePrice(activeProduct.samplePriceInr)}
-                </p>
-                <SampleBadge />
-              </div>
-              <div className="mt-8 flex flex-wrap gap-3">
-                <WhatsAppButton
-                  sku={activeProduct.sku}
-                  className="!bg-[#C9893A] !text-[#1B3022]"
+          <div className="mx-auto max-w-6xl">
+            <Breadcrumbs items={crumbs} tone="forest" />
+            <div className="mt-2 grid gap-10 lg:grid-cols-2">
+              <div className="relative aspect-[4/5] overflow-hidden border border-[#E8C17A]/25">
+                <Image
+                  src={activeProduct.image}
+                  alt={activeProduct.name}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width:768px) 100vw, 50vw"
+                  priority
                 />
-                <button
-                  type="button"
-                  onClick={() => onNavigate("shop")}
-                  className="border border-[#E8C17A]/40 px-5 py-3 text-sm text-[#F8F4EC]"
-                >
-                  Return to collection
-                </button>
+              </div>
+              <div className="flex flex-col justify-center">
+                <p className="text-[11px] uppercase tracking-[0.22em] text-[#E8C17A]">
+                  {activeProduct.sku}
+                </p>
+                <h1 className="mt-3 font-[family-name:var(--font-cormorant)] text-4xl text-[#F8F4EC] md:text-5xl">
+                  {activeProduct.name}
+                </h1>
+                <p className="mt-5 text-sm leading-7 text-[#D5D8C8]/85">
+                  {activeProduct.blurb}
+                </p>
+                <div className="mt-6 flex items-center gap-3">
+                  <p className="text-2xl text-[#F8F4EC]">
+                    {formatSamplePrice(activeProduct.samplePriceInr)}
+                  </p>
+                  <SampleBadge />
+                </div>
+                <div className="mt-8 flex flex-wrap gap-3">
+                  <WhatsAppButton
+                    sku={activeProduct.sku}
+                    className="!bg-[#C9893A] !text-[#1B3022]"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => onBack("shop")}
+                    className="border border-[#E8C17A]/40 px-5 py-3 text-sm text-[#F8F4EC]"
+                  >
+                    Back
+                  </button>
+                </div>
               </div>
             </div>
           </div>
@@ -232,6 +248,11 @@ export function ConceptD({
       {page === "about" && (
         <section className="px-5 pb-20 pt-10 md:px-10 md:pb-24">
           <div className="mx-auto max-w-4xl text-center">
+            <Breadcrumbs
+              items={crumbs}
+              tone="forest"
+              className="[&_ol]:justify-center"
+            />
             <LotusMark className="mx-auto h-12 w-12 text-[#E8C17A]" />
             <h1 className="mt-6 font-[family-name:var(--font-cormorant)] text-4xl text-[#F8F4EC] md:text-5xl">
               Our craft
@@ -256,6 +277,13 @@ export function ConceptD({
 
       {page === "contact" && (
         <section className="px-5 pb-20 pt-10 md:px-10 md:pb-24">
+          <div className="mx-auto mb-6 max-w-xl">
+            <Breadcrumbs
+              items={crumbs}
+              tone="forest"
+              className="[&_ol]:justify-center"
+            />
+          </div>
           <div className="mx-auto max-w-xl border border-[#E8C17A]/25 bg-[#15261B] px-6 py-12 text-center md:px-10">
             <LotusMark className="mx-auto h-10 w-10 text-[#E8C17A]" />
             <h1 className="mt-4 font-[family-name:var(--font-cormorant)] text-4xl text-[#F8F4EC]">

@@ -9,6 +9,7 @@ import {
   products,
   sampleTestimonials,
 } from "@/lib/products";
+import { Breadcrumbs, buildPageCrumbs } from "@/components/shared/Breadcrumbs";
 import { HeroBanner } from "@/components/shared/HeroBanner";
 import { ProductCard } from "@/components/shared/ProductCard";
 import { SampleBadge } from "@/components/shared/SampleBadge";
@@ -23,14 +24,27 @@ const links = [
   { id: "contact" as const, label: "Contact" },
 ];
 
+const crumbLabels = {
+  shop: "Lookbook",
+  about: "Our story",
+  contact: "Contact",
+};
+
 /** Persona C — Premium Editorial: magazine masthead, oversized type, lookbook */
 export function ConceptC({
   page,
   onNavigate,
+  onBack,
   activeProduct,
-  onSelectProduct,
+  onOpenProduct,
 }: ConceptProps) {
   const headerTone = page === "home" ? "overlay" : "solid-dark";
+  const crumbs = buildPageCrumbs({
+    page,
+    labels: crumbLabels,
+    productName: activeProduct.name,
+    onNavigate,
+  });
 
   return (
     <div className="relative min-h-full bg-[#111111] text-[#EDEDED] [--font-display:var(--font-instrument)]">
@@ -87,10 +101,7 @@ export function ConceptC({
                       product={p}
                       tone="dark"
                       layout="editorial"
-                      onOpen={(item) => {
-                        onSelectProduct(item);
-                        onNavigate("product");
-                      }}
+                      onOpen={onOpenProduct}
                     />
                   </div>
                 ))}
@@ -127,6 +138,7 @@ export function ConceptC({
 
       {page === "shop" && (
         <section className="px-5 pb-20 pt-10 sm:px-8 md:px-12 md:pb-24">
+          <Breadcrumbs items={crumbs} tone="dark" />
           <h1 className="font-[family-name:var(--font-instrument)] text-5xl md:text-7xl">
             Lookbook
           </h1>
@@ -137,10 +149,7 @@ export function ConceptC({
                 key={p.id}
                 type="button"
                 className="mb-8 block w-full break-inside-avoid text-left"
-                onClick={() => {
-                  onSelectProduct(p);
-                  onNavigate("product");
-                }}
+                onClick={() => onOpenProduct(p)}
               >
                 <div
                   className={`relative overflow-hidden ${
@@ -175,42 +184,47 @@ export function ConceptC({
       )}
 
       {page === "product" && (
-        <section className="grid md:min-h-[calc(100svh-4.25rem)] md:grid-cols-2">
-          <div className="relative min-h-[50vh] md:min-h-full">
-            <Image
-              src={activeProduct.image}
-              alt={activeProduct.name}
-              fill
-              className="object-cover"
-              sizes="50vw"
-              priority
-            />
+        <section className="md:min-h-[calc(100svh-4.25rem)]">
+          <div className="px-5 pt-6 sm:px-8 md:px-12">
+            <Breadcrumbs items={crumbs} tone="dark" />
           </div>
-          <div className="flex flex-col justify-center px-6 py-14 sm:px-10 md:px-14">
-            <p className="text-[11px] uppercase tracking-[0.28em] text-[#C4898E]">
-              Feature · {activeProduct.sku}
-            </p>
-            <h1 className="mt-4 font-[family-name:var(--font-instrument)] text-4xl leading-none sm:text-5xl md:text-6xl">
-              {activeProduct.name}
-            </h1>
-            <p className="mt-6 max-w-md text-sm leading-7 text-white/65">
-              {activeProduct.blurb}
-            </p>
-            <div className="mt-8 flex items-center gap-3">
-              <p className="text-2xl">
-                {formatSamplePrice(activeProduct.samplePriceInr)}
-              </p>
-              <SampleBadge />
+          <div className="grid md:min-h-[calc(100svh-7rem)] md:grid-cols-2">
+            <div className="relative min-h-[50vh] md:min-h-full">
+              <Image
+                src={activeProduct.image}
+                alt={activeProduct.name}
+                fill
+                className="object-cover"
+                sizes="50vw"
+                priority
+              />
             </div>
-            <div className="mt-10 flex flex-wrap gap-3">
-              <WhatsAppButton sku={activeProduct.sku} />
-              <button
-                type="button"
-                onClick={() => onNavigate("shop")}
-                className="border border-white/25 px-5 py-3 text-sm"
-              >
-                Return to lookbook
-              </button>
+            <div className="flex flex-col justify-center px-6 py-14 sm:px-10 md:px-14">
+              <p className="text-[11px] uppercase tracking-[0.28em] text-[#C4898E]">
+                Feature · {activeProduct.sku}
+              </p>
+              <h1 className="mt-4 font-[family-name:var(--font-instrument)] text-4xl leading-none sm:text-5xl md:text-6xl">
+                {activeProduct.name}
+              </h1>
+              <p className="mt-6 max-w-md text-sm leading-7 text-white/65">
+                {activeProduct.blurb}
+              </p>
+              <div className="mt-8 flex items-center gap-3">
+                <p className="text-2xl">
+                  {formatSamplePrice(activeProduct.samplePriceInr)}
+                </p>
+                <SampleBadge />
+              </div>
+              <div className="mt-10 flex flex-wrap gap-3">
+                <WhatsAppButton sku={activeProduct.sku} />
+                <button
+                  type="button"
+                  onClick={() => onBack("shop")}
+                  className="border border-white/25 px-5 py-3 text-sm"
+                >
+                  Back
+                </button>
+              </div>
             </div>
           </div>
         </section>
@@ -218,7 +232,8 @@ export function ConceptC({
 
       {page === "about" && (
         <section className="px-5 pb-20 pt-10 sm:px-8 md:px-12 md:pb-24">
-          <div className="mx-auto grid max-w-7xl gap-10 md:grid-cols-2">
+          <Breadcrumbs items={crumbs} tone="dark" />
+          <div className="mx-auto mt-2 grid max-w-7xl gap-10 md:grid-cols-2">
             <h1 className="font-[family-name:var(--font-instrument)] text-5xl leading-none md:text-7xl lg:text-8xl">
               About
             </h1>
@@ -243,6 +258,7 @@ export function ConceptC({
 
       {page === "contact" && (
         <section className="flex min-h-[70svh] flex-col justify-center px-5 py-20 sm:px-8 md:px-12">
+          <Breadcrumbs items={crumbs} tone="dark" />
           <h1 className="font-[family-name:var(--font-instrument)] text-5xl md:text-7xl lg:text-8xl">
             Do get in touch
           </h1>

@@ -16,7 +16,7 @@ type Props = {
 
 /**
  * Exact first viewport — 100dvh/svh, no header height subtracted.
- * Site header must be position:absolute overlaying this section.
+ * Site header must overlay (absolute) — never sit in normal flow above this.
  */
 export function HeroBanner({
   src,
@@ -29,7 +29,7 @@ export function HeroBanner({
 }: Props) {
   return (
     <section
-      className={`relative isolate flex h-svh max-h-svh min-h-svh w-full flex-col overflow-hidden supports-[height:100dvh]:h-dvh supports-[height:100dvh]:max-h-dvh supports-[height:100dvh]:min-h-dvh ${className}`}
+      className={`relative isolate flex h-svh max-h-svh min-h-svh w-full flex-col overflow-hidden overscroll-none supports-[height:100dvh]:h-dvh supports-[height:100dvh]:max-h-dvh supports-[height:100dvh]:min-h-dvh ${className}`}
     >
       <Image
         src={src}

@@ -40,6 +40,7 @@ const toneStyles: Record<
   }
 > = {
   overlay: {
+    /* absolute overlay — must not consume layout height above 100dvh heroes */
     bar: "pointer-events-none absolute inset-x-0 top-0 z-40 bg-gradient-to-b from-black/45 via-black/15 to-transparent",
     link: "text-white/80 hover:text-white",
     linkActive: "text-white",
@@ -116,7 +117,7 @@ export function SiteHeader({
   const showMobileSilver = !open && page !== "silver";
 
   return (
-    <header className={`relative ${styles.bar} ${className}`}>
+    <header className={`${styles.bar} ${className}`}>
       <div className="relative mx-auto flex h-[4.5rem] w-full max-w-[1400px] items-center px-4 sm:h-20 sm:px-6 md:px-8">
         {/* True viewport-centred logo (not skewed by asymmetric side tools) */}
         <button

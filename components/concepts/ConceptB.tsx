@@ -61,26 +61,26 @@ export function ConceptB({
 
       {page === "home" && (
         <>
-          {/* Exact viewport split — header overlays; no height eaten */}
-          <section className="grid h-svh max-h-svh min-h-svh w-full supports-[height:100dvh]:h-dvh supports-[height:100dvh]:max-h-dvh supports-[height:100dvh]:min-h-dvh lg:grid-cols-2">
-            <div className="relative flex min-h-0 flex-col justify-end bg-[#FAF8F7] px-6 pb-14 pt-28 sm:px-10 sm:pb-16 lg:px-16 lg:pb-20 xl:px-20">
-              <h1 className="max-w-md font-[family-name:var(--font-outfit)] text-4xl font-light leading-[1.08] tracking-tight text-[#0A0A0A] md:text-5xl xl:text-6xl">
+          {/* Exact viewport split — header overlays; one screen on mobile, no overflow */}
+          <section className="grid h-svh max-h-svh min-h-svh w-full grid-rows-[minmax(0,1fr)_minmax(0,1.15fr)] overflow-hidden supports-[height:100dvh]:h-dvh supports-[height:100dvh]:max-h-dvh supports-[height:100dvh]:min-h-dvh lg:grid-cols-2 lg:grid-rows-none">
+            <div className="relative flex min-h-0 flex-col justify-end bg-[#FAF8F7] px-6 pb-10 pt-24 sm:px-10 sm:pb-14 sm:pt-28 lg:px-16 lg:pb-20 xl:px-20">
+              <h1 className="max-w-md font-[family-name:var(--font-outfit)] text-3xl font-light leading-[1.08] tracking-tight text-[#0A0A0A] sm:text-4xl md:text-5xl xl:text-6xl">
                 Silver,
                 <br />
                 simply shown.
               </h1>
-              <p className="mt-5 max-w-sm text-sm leading-relaxed text-[#5A5A63]">
+              <p className="mt-4 max-w-sm text-sm leading-relaxed text-[#5A5A63] sm:mt-5">
                 Oxidised finishes, soft rose light — jewellery without the noise.
               </p>
               <button
                 type="button"
                 onClick={() => onNavigate("shop")}
-                className="mt-8 w-fit bg-[#302850] px-7 py-3.5 text-xs uppercase tracking-[0.16em] text-white transition hover:bg-[#241E3D]"
+                className="mt-6 w-fit bg-[#302850] px-7 py-3.5 text-xs uppercase tracking-[0.16em] text-white transition hover:bg-[#241E3D] sm:mt-8"
               >
                 Shop the collection
               </button>
             </div>
-            <div className="relative min-h-[42%] overflow-hidden lg:min-h-0">
+            <div className="relative min-h-0 overflow-hidden">
               <Image
                 src={heroImages.B}
                 alt="Polished silver bangles on linen — lifestyle"

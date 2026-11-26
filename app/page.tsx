@@ -1,5 +1,5 @@
-import { StakeholderChrome } from "@/components/stakeholder/StakeholderChrome";
+import { PreviewApp } from "@/components/preview/PreviewApp";
 
 export default function Home() {
-  return <StakeholderChrome />;
+  return <PreviewApp />;
 }

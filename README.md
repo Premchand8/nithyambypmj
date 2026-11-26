@@ -32,6 +32,6 @@ Colour/typography cues were derived from photography (no stakeholder hex handoff
 
 Dummy WhatsApp for enquire UI: **+91 98765 43210**
 
-## Stakeholder chrome
+## Design switcher (internal)
 
-Top bar (tabs, page previews, **Select This Design**, confirm dialog, reset) is **internal only** and not part of the public site concepts. Selection is stored in `localStorage` key `nithyam-selected-design`.
+There is **no top stakeholder bar**. A subtle layers icon beside the shopping bag opens a compact popover to switch Designs A–D, save selection, or reset. Selection is stored in `localStorage` key `nithyam-selected-design`. Site navigation handles page previews (Home / Shop / Product / About / Contact).

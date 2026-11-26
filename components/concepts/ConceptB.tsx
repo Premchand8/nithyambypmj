@@ -28,6 +28,8 @@ export function ConceptB({
   activeProduct,
   onSelectProduct,
 }: ConceptProps) {
+  const headerTone = page === "home" ? "overlay-light" : "solid-light";
+
   return (
     <div className="relative min-h-full bg-[#FAF8F7] text-[#161616] [--font-display:var(--font-outfit)]">
       <SiteHeader
@@ -35,13 +37,14 @@ export function ConceptB({
         onNavigate={onNavigate}
         links={links}
         logoSrc={brand.logos.indigo}
-        tone="solid-light"
+        tone={headerTone}
       />
 
       {page === "home" && (
         <>
-          <section className="grid min-h-[calc(100svh-4.25rem)] w-full lg:grid-cols-2">
-            <div className="relative flex min-h-[48svh] flex-col justify-center bg-[#FAF8F7] px-6 py-16 sm:px-10 lg:min-h-0 lg:px-16 xl:px-20">
+          {/* Exact viewport split — header overlays; no height eaten */}
+          <section className="grid h-svh max-h-svh min-h-svh w-full supports-[height:100dvh]:h-dvh supports-[height:100dvh]:max-h-dvh supports-[height:100dvh]:min-h-dvh lg:grid-cols-2">
+            <div className="relative flex min-h-0 flex-col justify-center bg-[#FAF8F7] px-6 pb-10 pt-20 sm:px-10 lg:px-16 xl:px-20">
               <p className="text-[11px] uppercase tracking-[0.24em] text-[#D4A5A5]">
                 Handcrafted silver
               </p>
@@ -68,7 +71,7 @@ export function ConceptB({
                 />
               </div>
             </div>
-            <div className="relative min-h-[48svh] lg:min-h-full">
+            <div className="relative min-h-[40%] lg:min-h-0">
               <Image
                 src={heroImages.B}
                 alt="Silver jewellery on black — lifestyle"

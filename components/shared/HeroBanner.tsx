@@ -14,7 +14,10 @@ type Props = {
   priority?: boolean;
 };
 
-/** Fixed first-viewport hero — full bleed, min 100svh */
+/**
+ * Exact first viewport — 100dvh/svh, no header height subtracted.
+ * Site header must be position:absolute overlaying this section.
+ */
 export function HeroBanner({
   src,
   alt,
@@ -26,7 +29,7 @@ export function HeroBanner({
 }: Props) {
   return (
     <section
-      className={`relative isolate flex min-h-[100svh] w-full flex-col overflow-hidden ${className}`}
+      className={`relative isolate flex h-svh max-h-svh min-h-svh w-full flex-col overflow-hidden supports-[height:100dvh]:h-dvh supports-[height:100dvh]:max-h-dvh supports-[height:100dvh]:min-h-dvh ${className}`}
     >
       <Image
         src={src}
@@ -38,7 +41,7 @@ export function HeroBanner({
         style={{ objectPosition: position }}
       />
       <div className={`absolute inset-0 ${overlayClassName}`} aria-hidden />
-      <div className="relative z-10 flex min-h-[100svh] w-full flex-1 flex-col">
+      <div className="relative z-10 flex h-full w-full flex-1 flex-col">
         {children}
       </div>
     </section>

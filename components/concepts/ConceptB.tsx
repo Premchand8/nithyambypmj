@@ -61,14 +61,14 @@ export function ConceptB({
                 Shop the collection
               </button>
             </div>
-            <div className="relative min-h-[40%] lg:min-h-0">
+            <div className="relative min-h-[42%] overflow-hidden lg:min-h-0">
               <Image
                 src={heroImages.B}
-                alt="Silver jewellery on black — lifestyle"
+                alt="Polished silver bangles on linen — lifestyle"
                 fill
                 priority
                 className="object-cover"
-                style={{ objectPosition: "center 45%" }}
+                style={{ objectPosition: "68% 42%" }}
                 sizes="(max-width:1024px) 100vw, 50vw"
               />
             </div>
@@ -107,13 +107,14 @@ export function ConceptB({
             </div>
           </section>
 
-          <section className="grid min-h-[55svh] lg:grid-cols-2">
-            <div className="relative min-h-[40svh] lg:min-h-full">
+          <section className="grid min-h-[60svh] lg:grid-cols-2">
+            <div className="relative min-h-[44svh] overflow-hidden lg:min-h-full">
               <Image
                 src={heroImages.BProduct}
-                alt="Nithyam silver idol"
+                alt="Nithyam silver idol — close crop"
                 fill
                 className="object-cover"
+                style={{ objectPosition: "center 28%" }}
                 sizes="50vw"
               />
             </div>

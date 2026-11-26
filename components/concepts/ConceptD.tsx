@@ -65,9 +65,9 @@ export function ConceptD({
         <>
           <HeroBanner
             src={heroImages.DAlt}
-            alt="Nithyam silver idols on forest green"
-            position="center 35%"
-            overlayClassName="bg-gradient-to-t from-[#1B3022] via-[#1B3022]/55 to-black/35"
+            alt="Silver Krishna jhoola in a mandir setting"
+            position="center 42%"
+            overlayClassName="bg-gradient-to-t from-[#1B3022] via-[#1B3022]/50 to-black/25"
           >
             <div className="flex flex-1 flex-col items-center justify-end px-6 pb-16 pt-28 text-center sm:pb-20 md:pb-24">
               <h1 className="max-w-2xl font-[family-name:var(--font-cormorant)] text-3xl leading-tight text-[#F8F4EC] animate-[fadeUp_900ms_ease_both] sm:text-4xl md:text-6xl">
@@ -89,12 +89,13 @@ export function ConceptD({
 
           {/* Storytelling: image left / copy right — not a product grid shell */}
           <section className="grid lg:grid-cols-2">
-            <div className="relative min-h-[50svh] lg:min-h-[80svh]">
+            <div className="relative min-h-[52svh] overflow-hidden lg:min-h-[80svh]">
               <Image
                 src={heroImages.D}
-                alt="Nithyam gift silver on green"
+                alt="Nithyam silver swans — sculptural detail"
                 fill
                 className="object-cover"
+                style={{ objectPosition: "center 40%" }}
                 sizes="50vw"
               />
             </div>

@@ -47,8 +47,8 @@ export function ConceptC({
           <HeroBanner
             src={heroImages.C}
             alt="Nithyam divine trinity — editorial hero"
-            position="center 30%"
-            overlayClassName="bg-gradient-to-t from-black via-black/50 to-black/40"
+            position="center 48%"
+            overlayClassName="bg-gradient-to-t from-black via-black/45 to-black/30"
           >
             <div className="flex flex-1 flex-col justify-end px-5 pb-16 pt-28 sm:px-8 sm:pb-20 md:px-12 md:pb-24">
               <h1 className="max-w-4xl font-[family-name:var(--font-instrument)] text-5xl leading-[0.92] tracking-tight text-white sm:text-6xl md:text-7xl lg:text-8xl">
@@ -101,12 +101,13 @@ export function ConceptC({
           <section className="relative min-h-[70svh] overflow-hidden">
             <Image
               src={heroImages.CAlt}
-              alt="Editorial lifestyle accent"
+              alt="Silver necklace on silk — editorial accent"
               fill
               className="object-cover"
+              style={{ objectPosition: "center 40%" }}
               sizes="100vw"
             />
-            <div className="absolute inset-0 bg-black/50" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/45 to-black/25" />
             <div className="relative z-10 flex min-h-[70svh] items-end px-5 py-14 sm:px-8 md:px-12">
               <div className="max-w-3xl">
                 <p className="text-[11px] uppercase tracking-[0.28em] text-[#C4898E]">

@@ -134,17 +134,24 @@ export const products: Product[] = [
 
 export const featuredProducts = products.slice(0, 6);
 
-/** Full-viewport heroes: landscape brand crops + silver lifestyle (see heroes/SOURCES) */
+/** Full-viewport heroes: strong full-bleed brand crops + lifestyle (see heroes/SOURCES) */
 export const heroImages = {
+  /** Design A — Classic Luxury (kept: strong brand jhoola crop) */
   A: "/references/heroes/brand-hero-jhoola.jpg",
-  B: "/references/heroes/hero-silver-hands.jpg",
-  BProduct: "/references/heroes/brand-hero-idol.jpg",
-  C: "/references/heroes/brand-hero-trinity.jpg",
-  CAlt: "/references/heroes/hero-lifestyle-rose.jpg",
-  D: "/references/heroes/brand-hero-gift.jpg",
-  DAlt: "/references/heroes/brand-hero-trinity.jpg",
-  shopBanner: "/references/heroes/brand-hero-feature.jpg",
-  about: "/references/02.webp",
+  /** Design B — Modern Minimal: airy silver-on-linen lifestyle */
+  B: "/references/heroes/hero-b-modern-minimal.jpg",
+  /** Design B side panel: filled brand idol crop */
+  BProduct: "/references/heroes/brand-b-side-idol.jpg",
+  /** Design C — Premium Editorial: filled trinity with cinematic light */
+  C: "/references/heroes/hero-c-editorial-fill.jpg",
+  /** Design C mid-band: silver necklace editorial on silk */
+  CAlt: "/references/heroes/hero-c-alt-silver.jpg",
+  /** Design D side story: silver swans — strong subject fill */
+  D: "/references/heroes/brand-side-lifestyle.jpg",
+  /** Design D hero: mandir lifestyle jhoola (marigolds, diyas, velvet) */
+  DAlt: "/references/heroes/hero-d-mandir-lifestyle.jpg",
+  shopBanner: "/references/heroes/brand-d-feature-fill.jpg",
+  about: "/references/heroes/brand-side-lifestyle.jpg",
 };
 
 export const sampleTestimonials = [

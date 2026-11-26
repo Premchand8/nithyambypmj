@@ -32,7 +32,7 @@ function PreviewCanvas() {
   };
 
   return (
-    <div className="min-h-dvh w-full">
+    <div className="min-h-dvh w-full overflow-x-clip overflow-y-visible">
       {activeDesign === "A" && <ConceptA {...conceptProps} />}
       {activeDesign === "B" && <ConceptB {...conceptProps} />}
       {activeDesign === "C" && <ConceptC {...conceptProps} />}

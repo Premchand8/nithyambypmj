@@ -50,7 +50,7 @@ export function ConceptC({
   return (
     <div
       className={`relative bg-[#111111] text-[#EDEDED] [--font-display:var(--font-instrument)] ${
-        page === "product" ? "h-svh overflow-hidden" : "min-h-full"
+        page === "product" ? "h-svh overflow-hidden" : "min-h-dvh"
       }`}
     >
       <SiteHeader

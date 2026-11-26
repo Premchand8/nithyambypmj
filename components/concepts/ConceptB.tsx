@@ -48,7 +48,7 @@ export function ConceptB({
   return (
     <div
       className={`relative bg-[#FAF8F7] text-[#161616] [--font-display:var(--font-outfit)] ${
-        page === "product" ? "h-svh overflow-hidden" : "min-h-full"
+        page === "product" ? "h-svh overflow-hidden" : "min-h-dvh"
       }`}
     >
       <SiteHeader
@@ -62,7 +62,7 @@ export function ConceptB({
       {page === "home" && (
         <>
           {/* Exact viewport split — header overlays; one screen on mobile, no overflow */}
-          <section className="grid h-svh max-h-svh min-h-svh w-full grid-rows-[minmax(0,1fr)_minmax(0,1.15fr)] overflow-hidden supports-[height:100dvh]:h-dvh supports-[height:100dvh]:max-h-dvh supports-[height:100dvh]:min-h-dvh lg:grid-cols-2 lg:grid-rows-none">
+          <section className="grid h-[100svh] min-h-[100svh] w-full grid-rows-[minmax(0,1fr)_minmax(0,1.15fr)] overflow-hidden supports-[height:100dvh]:h-[100dvh] supports-[height:100dvh]:min-h-[100dvh] lg:grid-cols-2 lg:grid-rows-none">
             <div className="relative flex min-h-0 flex-col justify-end bg-[#FAF8F7] px-6 pb-10 pt-24 sm:px-10 sm:pb-14 sm:pt-28 lg:px-16 lg:pb-20 xl:px-20">
               <h1 className="max-w-md font-[family-name:var(--font-outfit)] text-3xl font-light leading-[1.08] tracking-tight text-[#0A0A0A] sm:text-4xl md:text-5xl xl:text-6xl">
                 Silver,

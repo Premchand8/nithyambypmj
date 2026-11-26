@@ -69,7 +69,7 @@ export function ConceptD({
   return (
     <div
       className={`relative bg-[#1B3022] text-[#F4F4F6] [--font-display:var(--font-cormorant)] ${
-        page === "product" ? "h-svh overflow-hidden" : "min-h-full"
+        page === "product" ? "h-svh overflow-hidden" : "min-h-dvh"
       }`}
     >
       <SiteHeader

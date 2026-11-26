@@ -178,10 +178,10 @@ export function SiteHeader({
         </div>
       </div>
 
-      {/* Mobile: silver chip at right corner, under the hamburger — no header height growth */}
+      {/* Mobile: silver chip at left corner of the header — no header height growth */}
       {showMobileSilver ? (
         <div
-          className={`pointer-events-auto absolute right-3 top-[4.5rem] z-30 sm:right-5 sm:top-20 lg:hidden ${pe}`}
+          className={`pointer-events-auto absolute left-3 top-1/2 z-30 -translate-y-1/2 sm:left-5 lg:hidden ${pe}`}
         >
           <SilverRateControl
             tone={styles.icon}

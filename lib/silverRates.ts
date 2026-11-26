@@ -56,7 +56,7 @@ export function getSampleSilverRates(now = new Date()): {
     purityLabel: "999 fine silver",
     unitLabel: "₹ per gram",
     disclaimer:
-      "Indicative sample rates for preview only — not live market data. Please confirm the day’s rate with the store before purchase.",
+      "Rates shown are indicative only. Please confirm today’s rate with the store before you buy.",
     today,
     history,
   };
@@ -69,11 +69,11 @@ export function formatInr(amount: number, fractionDigits = 0) {
   })}`;
 }
 
+/** e.g. 26 Nov 2026 — easy for Indian shoppers to scan */
 export function formatDisplayDate(iso: string) {
   const d = new Date(`${iso}T12:00:00`);
-  return d.toLocaleDateString("en-IN", {
-    day: "2-digit",
-    month: "short",
-    year: "numeric",
-  });
+  const day = d.getDate();
+  const month = d.toLocaleDateString("en-IN", { month: "short" });
+  const year = d.getFullYear();
+  return `${day} ${month} ${year}`;
 }

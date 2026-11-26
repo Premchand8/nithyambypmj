@@ -9,6 +9,7 @@ import {
   usePreview,
 } from "@/components/preview/PreviewContext";
 import { EnquiryPopup } from "@/components/shared/EnquiryPopup";
+import { FloatingWhatsApp } from "@/components/shared/FloatingWhatsApp";
 
 function PreviewCanvas() {
   const {
@@ -37,6 +38,7 @@ function PreviewCanvas() {
       {activeDesign === "C" && <ConceptC {...conceptProps} />}
       {activeDesign === "D" && <ConceptD {...conceptProps} />}
       <EnquiryPopup active={page === "home"} design={activeDesign} />
+      <FloatingWhatsApp />
     </div>
   );
 }

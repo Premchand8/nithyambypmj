@@ -47,9 +47,7 @@ export function ConceptB({
   return (
     <div
       className={`relative bg-[#FAF8F7] text-[#161616] [--font-display:var(--font-outfit)] ${
-        page === "shop" || page === "product"
-          ? "h-svh overflow-hidden"
-          : "min-h-full"
+        page === "product" ? "h-svh overflow-hidden" : "min-h-full"
       }`}
     >
       <SiteHeader
@@ -155,15 +153,13 @@ export function ConceptB({
       )}
 
       {page === "shop" && (
-        <section className="mx-auto flex h-[calc(100svh-4.5rem)] w-full max-w-7xl flex-col overflow-hidden px-4 pb-3 pt-3 sm:h-[calc(100svh-5rem)] sm:px-6 md:px-8 md:pb-4 md:pt-4">
-          <div className="shrink-0">
-            <Breadcrumbs items={crumbs} tone="light" />
-            <h1 className="font-[family-name:var(--font-outfit)] text-xl font-light sm:text-2xl md:text-3xl">
-              Shop
-            </h1>
-            <p className="mt-0.5 text-xs text-[#6B6B73]">Sample pricing only</p>
-          </div>
-          <div className="mt-3 grid min-h-0 flex-1 grid-cols-2 gap-2 overflow-y-auto auto-rows-[minmax(7.5rem,1fr)] sm:grid-cols-3 md:mt-4 md:auto-rows-[minmax(0,1fr)] md:grid-cols-4 md:gap-3 md:overflow-hidden">
+        <section className="mx-auto max-w-6xl px-5 py-10 md:px-8 md:py-14">
+          <Breadcrumbs items={crumbs} tone="light" />
+          <h1 className="font-[family-name:var(--font-outfit)] text-3xl font-light md:text-4xl">
+            Shop
+          </h1>
+          <p className="mt-1 text-sm text-[#6B6B73]">Sample pricing only</p>
+          <div className="mt-8 grid grid-cols-2 gap-x-4 gap-y-8 md:mt-10 md:grid-cols-3 md:gap-x-6 md:gap-y-10">
             {products.map((p) => (
               <ProductCard
                 key={p.id}
@@ -180,24 +176,24 @@ export function ConceptB({
         <section className="mx-auto flex h-[calc(100svh-4.5rem)] w-full max-w-6xl flex-col overflow-hidden px-4 pb-3 pt-3 sm:h-[calc(100svh-5rem)] sm:px-6 md:px-8 md:pb-4 md:pt-4">
           <Breadcrumbs items={crumbs} tone="light" />
           <div className="mt-2 grid min-h-0 flex-1 gap-4 overflow-y-auto md:grid-cols-12 md:items-stretch md:gap-6 md:overflow-hidden">
-            <div className="relative min-h-[38svh] bg-[#ECECEF] md:col-span-7 md:min-h-0">
+            <div className="relative flex min-h-[42svh] items-center justify-center bg-[#ECECEF] md:col-span-7 md:min-h-0">
               <Image
                 src={activeProduct.image}
                 alt={activeProduct.name}
                 fill
-                className="object-cover"
+                className="object-contain p-3 sm:p-5"
                 sizes="(max-width:768px) 100vw, 60vw"
                 priority
               />
             </div>
-            <div className="flex flex-col justify-center md:col-span-5 md:overflow-hidden">
+            <div className="flex flex-col justify-center md:col-span-5 md:overflow-y-auto">
               <p className="text-[11px] uppercase tracking-[0.18em] text-[#9A9AA3]">
                 {activeProduct.sku}
               </p>
               <h1 className="mt-2 font-[family-name:var(--font-outfit)] text-2xl font-light sm:text-3xl">
                 {activeProduct.name}
               </h1>
-              <p className="mt-3 text-sm leading-6 text-[#5A5A63] line-clamp-3 md:line-clamp-4">
+              <p className="mt-3 text-sm leading-6 text-[#5A5A63]">
                 {activeProduct.blurb}
               </p>
               <div className="mt-4 flex items-center gap-2">
@@ -273,7 +269,7 @@ export function ConceptB({
         </section>
       )}
 
-      {page !== "shop" && page !== "product" ? (
+      {page !== "product" ? (
         <footer className="border-t border-[#E8E4E2] px-5 py-10 text-center text-xs text-[#9A9AA3]">
           {brand.parentLine}
         </footer>

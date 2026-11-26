@@ -68,9 +68,7 @@ export function ConceptD({
   return (
     <div
       className={`relative bg-[#1B3022] text-[#F4F4F6] [--font-display:var(--font-cormorant)] ${
-        page === "shop" || page === "product"
-          ? "h-svh overflow-hidden"
-          : "min-h-full"
+        page === "product" ? "h-svh overflow-hidden" : "min-h-full"
       }`}
     >
       <SiteHeader
@@ -174,20 +172,20 @@ export function ConceptD({
       )}
 
       {page === "shop" && (
-        <section className="flex h-[calc(100svh-4.5rem)] flex-col overflow-hidden px-4 pb-3 pt-3 sm:h-[calc(100svh-5rem)] sm:px-6 md:px-8 md:pb-4 md:pt-4">
-          <div className="mx-auto flex min-h-0 w-full max-w-7xl flex-1 flex-col">
-            <div className="shrink-0 text-center">
+        <section className="px-5 pb-16 pt-8 md:px-10 md:pb-20 md:pt-10">
+          <div className="mx-auto max-w-6xl">
+            <div className="text-center">
               <Breadcrumbs
                 items={crumbs}
                 tone="forest"
                 className="[&_ol]:justify-center"
               />
-              <h1 className="font-[family-name:var(--font-cormorant)] text-xl text-[#F8F4EC] sm:text-2xl md:text-3xl">
+              <h1 className="font-[family-name:var(--font-cormorant)] text-3xl text-[#F8F4EC] md:text-5xl">
                 Our collection
               </h1>
-              <p className="mt-0.5 text-xs text-[#D5D8C8]/80">Sample pricing only</p>
+              <p className="mt-2 text-sm text-[#D5D8C8]/80">Sample pricing only</p>
             </div>
-            <div className="mt-3 grid min-h-0 flex-1 grid-cols-2 gap-2 overflow-y-auto auto-rows-[minmax(7.5rem,1fr)] sm:grid-cols-3 md:mt-4 md:auto-rows-[minmax(0,1fr)] md:grid-cols-4 md:gap-3 md:overflow-hidden">
+            <div className="mt-8 grid grid-cols-2 gap-x-4 gap-y-8 md:mt-10 md:grid-cols-3 md:gap-x-6 md:gap-y-10">
               {products.map((p) => (
                 <ProductCard
                   key={p.id}
@@ -207,24 +205,24 @@ export function ConceptD({
           <div className="mx-auto flex min-h-0 w-full max-w-6xl flex-1 flex-col">
             <Breadcrumbs items={crumbs} tone="forest" />
             <div className="mt-2 grid min-h-0 flex-1 gap-4 overflow-y-auto md:grid-cols-2 md:items-stretch md:gap-6 md:overflow-hidden">
-              <div className="relative min-h-[38svh] overflow-hidden border border-[#E8C17A]/25 md:min-h-0">
+              <div className="relative flex min-h-[42svh] items-center justify-center overflow-hidden border border-[#E8C17A]/25 bg-[#15261B] md:min-h-0">
                 <Image
                   src={activeProduct.image}
                   alt={activeProduct.name}
                   fill
-                  className="object-cover"
+                  className="object-contain p-3 sm:p-4"
                   sizes="(max-width:768px) 100vw, 50vw"
                   priority
                 />
               </div>
-              <div className="flex flex-col justify-center md:overflow-hidden">
+              <div className="flex flex-col justify-center md:overflow-y-auto">
                 <p className="text-[11px] uppercase tracking-[0.22em] text-[#E8C17A]">
                   {activeProduct.sku}
                 </p>
                 <h1 className="mt-2 font-[family-name:var(--font-cormorant)] text-2xl text-[#F8F4EC] sm:text-3xl md:text-4xl">
                   {activeProduct.name}
                 </h1>
-                <p className="mt-3 text-sm leading-6 text-[#D5D8C8]/85 line-clamp-3 md:line-clamp-4">
+                <p className="mt-3 text-sm leading-6 text-[#D5D8C8]/85">
                   {activeProduct.blurb}
                 </p>
                 <div className="mt-4 flex items-center gap-3">
@@ -309,7 +307,7 @@ export function ConceptD({
         </section>
       )}
 
-      {page !== "shop" && page !== "product" ? (
+      {page !== "product" ? (
         <footer className="border-t border-[#E8C17A]/15 px-5 py-10 text-center md:px-8">
           <p className="text-xs uppercase tracking-[0.16em] text-[#C0C0C8]/70">
             {brand.parentLine}

@@ -24,30 +24,31 @@ export function ProductCard({
         : "text-[#161616]";
   const muted = tone === "light" ? "text-[#6B6B73]" : "text-white/65";
 
-  /** Viewport-fit shop grids — short image + one-line meta */
+  /** Shop grids — square image, readable meta; scrolls with the page */
   if (layout === "compact") {
     return (
       <button
         type="button"
         onClick={() => onOpen?.(product)}
-        className={`group flex h-full min-h-0 flex-col text-left ${text}`}
+        className={`group text-left ${text}`}
       >
-        <div className="relative min-h-0 w-full flex-1 overflow-hidden bg-black/5">
+        <div className="relative aspect-square overflow-hidden bg-black/5">
           <Image
             src={product.image}
             alt={product.name}
             fill
             className="object-cover transition duration-500 group-hover:opacity-90"
-            sizes="(max-width:768px) 50vw, 20vw"
+            sizes="(max-width:768px) 50vw, 33vw"
           />
         </div>
-        <div className="mt-1.5 flex shrink-0 items-baseline justify-between gap-2">
-          <p className="truncate text-[11px] leading-tight tracking-wide sm:text-xs">
-            {product.name}
-          </p>
-          <p className={`shrink-0 text-[11px] tabular-nums sm:text-xs ${muted}`}>
-            {formatSamplePrice(product.samplePriceInr)}
-          </p>
+        <div className="mt-2.5 space-y-1">
+          <p className="text-sm leading-snug tracking-wide">{product.name}</p>
+          <div className="flex items-center gap-2">
+            <p className={`text-sm tabular-nums ${muted}`}>
+              {formatSamplePrice(product.samplePriceInr)}
+            </p>
+            <SampleBadge />
+          </div>
         </div>
       </button>
     );

@@ -98,6 +98,38 @@ export const products: Product[] = [
     samplePriceInr: 17999,
     blurb: "Silver craftsmanship for sacred spaces.",
   },
+  {
+    id: "p13",
+    sku: "SBOX958436",
+    name: "Silver Box SBOX958436",
+    image: "/references/SBOX958436.webp",
+    samplePriceInr: 7599,
+    blurb: "Oxidised silver box for keepsakes and ritual use.",
+  },
+  {
+    id: "p14",
+    sku: "SLMP856542",
+    name: "Silver Lamp SLMP856542",
+    image: "/references/SLMP856542.webp",
+    samplePriceInr: 9499,
+    blurb: "Handcrafted lamp with warm ceremonial presence.",
+  },
+  {
+    id: "p15",
+    sku: "SIDL896748",
+    name: "Silver Idol SIDL896748",
+    image: "/references/SIDL896748.webp",
+    samplePriceInr: 13499,
+    blurb: "Temple-ready idol with fine oxidised detailing.",
+  },
+  {
+    id: "p16",
+    sku: "SDPM870064",
+    name: "Figurine SDPM870064",
+    image: "/references/SDPM870064.webp",
+    samplePriceInr: 6899,
+    blurb: "Sculptural silver figurine for the home shrine.",
+  },
 ];
 
 export const featuredProducts = products.slice(0, 6);
@@ -136,5 +168,6 @@ export function whatsappEnquiryUrl(sku?: string) {
   const text = sku
     ? `Hello Nithyam, I would like to enquire about ${sku}.`
     : "Hello Nithyam, I would like to enquire about your silver collection.";
-  return `https://wa.me/919999999999?text=${encodeURIComponent(text)}`;
+  // Dummy preview number (+91 98765 43210) — replace with live WhatsApp when ready
+  return `https://wa.me/919876543210?text=${encodeURIComponent(text)}`;
 }

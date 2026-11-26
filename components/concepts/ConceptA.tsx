@@ -147,7 +147,7 @@ export function ConceptA({
 
           <section className="mx-auto max-w-6xl px-5 py-20 md:px-8">
             <div className="mx-auto max-w-2xl text-center">
-              <p className="text-[11px] uppercase tracking-[0.28em] text-[#C0C0C8]">
+              <p className="text-[11px] uppercase tracking-[0.28em] text-[#B8883A]">
                 Featured
               </p>
               <h2 className="mt-3 font-[family-name:var(--font-cormorant)] text-4xl text-white">
@@ -231,7 +231,7 @@ export function ConceptA({
               />
             </div>
             <div>
-              <p className="text-[11px] uppercase tracking-[0.24em] text-[#C0C0C8]">
+              <p className="text-[11px] uppercase tracking-[0.24em] text-[#B8883A]">
                 {activeProduct.sku}
               </p>
               <h1 className="mt-3 font-[family-name:var(--font-cormorant)] text-4xl text-white md:text-5xl">
@@ -274,7 +274,7 @@ export function ConceptA({
               />
             </div>
             <div>
-              <p className="text-[11px] uppercase tracking-[0.24em] text-[#C0C0C8]">
+              <p className="text-[11px] uppercase tracking-[0.24em] text-[#B8883A]">
                 Our story
               </p>
               <h1 className="mt-3 font-[family-name:var(--font-cormorant)] text-4xl text-white">
@@ -303,7 +303,7 @@ export function ConceptA({
             </p>
             <div className="mt-10 space-y-3 border border-white/15 px-6 py-8 text-sm text-white/80">
               <p>{brand.placeholders.email}</p>
-              <p>{brand.placeholders.phone}</p>
+              <p>WhatsApp {brand.placeholders.whatsappDisplay} (dummy)</p>
               <p>{brand.placeholders.city}</p>
             </div>
             <WhatsAppButton className="mt-8" />

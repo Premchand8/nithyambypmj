@@ -108,7 +108,7 @@ export function ConceptC({
           <section className="px-5 py-20 md:px-10">
             <div className="mx-auto grid max-w-7xl gap-12 md:grid-cols-12">
               <div className="md:col-span-4 md:sticky md:top-24 md:self-start">
-                <p className="text-[11px] uppercase tracking-[0.28em] text-[#C0C0C8]">
+                <p className="text-[11px] uppercase tracking-[0.28em] text-[#1F6B4F]">
                   Volume 01
                 </p>
                 <h2 className="mt-4 font-[family-name:var(--font-instrument)] text-4xl leading-tight md:text-5xl">
@@ -139,9 +139,12 @@ export function ConceptC({
             </div>
           </section>
 
-          <section className="border-t border-white/10 px-5 py-16 md:px-10">
+          <section className="border-t border-[#1F6B4F]/35 bg-[#0E1210] px-5 py-16 md:px-10">
             <div className="mx-auto max-w-5xl">
-              <p className="font-[family-name:var(--font-instrument)] text-3xl leading-snug md:text-4xl">
+              <p className="text-[11px] uppercase tracking-[0.28em] text-[#C4898E]">
+                In their words
+              </p>
+              <p className="mt-4 font-[family-name:var(--font-instrument)] text-3xl leading-snug md:text-4xl">
                 “{sampleTestimonials[0].quote}”
               </p>
               <p className="mt-4 text-xs uppercase tracking-[0.2em] text-white/45">
@@ -210,7 +213,7 @@ export function ConceptC({
             />
           </div>
           <div className="flex flex-col justify-center px-6 py-16 md:px-14">
-            <p className="text-[11px] uppercase tracking-[0.28em] text-[#C0C0C8]">
+            <p className="text-[11px] uppercase tracking-[0.28em] text-[#C4898E]">
               Feature · {activeProduct.sku}
             </p>
             <h1 className="mt-4 font-[family-name:var(--font-instrument)] text-5xl leading-none md:text-6xl">
@@ -275,7 +278,7 @@ export function ConceptC({
           </p>
           <div className="mt-10 space-y-2 text-lg text-white/80">
             <p>{brand.placeholders.email}</p>
-            <p>{brand.placeholders.phone}</p>
+            <p>WhatsApp {brand.placeholders.whatsappDisplay} (dummy)</p>
             <p>{brand.placeholders.city}</p>
           </div>
           <WhatsAppButton className="mt-10 w-fit" />

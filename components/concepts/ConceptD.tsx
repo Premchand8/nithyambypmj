@@ -300,7 +300,7 @@ export function ConceptD({
             </p>
             <div className="mt-8 space-y-2 text-sm text-[#F4F4F6]/85">
               <p>{brand.placeholders.email}</p>
-              <p>{brand.placeholders.phone}</p>
+              <p>WhatsApp {brand.placeholders.whatsappDisplay} (dummy)</p>
               <p>{brand.placeholders.city}</p>
             </div>
             <WhatsAppButton

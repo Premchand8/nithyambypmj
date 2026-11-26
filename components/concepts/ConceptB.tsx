@@ -27,7 +27,7 @@ function Nav({
   ] as const;
 
   return (
-    <header className="sticky top-0 z-20 border-b border-[#E6E6EA] bg-[#FAFAFB]/90 backdrop-blur">
+    <header className="sticky top-0 z-20 border-b border-[#E6E6EA] bg-[#FAF8F7]/90 backdrop-blur">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4 md:px-8">
         <button type="button" onClick={() => onNavigate("home")}>
           <Image
@@ -68,7 +68,7 @@ export function ConceptB({
   onSelectProduct,
 }: ConceptProps) {
   return (
-    <div className="concept-b min-h-full bg-[#FAFAFB] text-[#161616] [--font-display:var(--font-outfit)]">
+    <div className="concept-b min-h-full bg-[#FAF8F7] text-[#161616] [--font-display:var(--font-outfit)]">
       <Nav page={page} onNavigate={onNavigate} />
 
       {page === "home" && (
@@ -82,7 +82,7 @@ export function ConceptB({
               className="object-cover object-center"
               sizes="100vw"
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-[#FAFAFB] via-[#FAFAFB]/88 to-transparent md:via-[#FAFAFB]/55" />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#FAF8F7] via-[#FAF8F7]/88 to-transparent md:via-[#FAF8F7]/55" />
             <div className="relative z-10 flex min-h-[88svh] max-w-xl flex-col justify-center px-6 py-20 md:px-14">
               <Image
                 src={brand.logos.indigo}
@@ -117,7 +117,7 @@ export function ConceptB({
           <section className="mx-auto max-w-6xl px-5 py-20 md:px-8">
             <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
               <div>
-                <p className="text-[11px] uppercase tracking-[0.2em] text-[#9A9AA3]">
+                <p className="text-[11px] uppercase tracking-[0.2em] text-[#D4A5A5]">
                   New
                 </p>
                 <h2 className="mt-2 font-[family-name:var(--font-outfit)] text-3xl font-light">
@@ -152,7 +152,7 @@ export function ConceptB({
               {sampleTestimonials.slice(0, 2).map((t) => (
                 <figure
                   key={t.name}
-                  className="flex-1 border-l border-[#302850]/25 pl-5"
+                  className="flex-1 border-l border-[#D4A5A5] pl-5"
                 >
                   <blockquote className="text-base leading-relaxed text-[#3A3A42]">
                     {t.quote}
@@ -294,7 +294,8 @@ export function ConceptB({
             <WhatsAppButton className="w-full" />
           </div>
           <p className="mt-6 text-xs text-[#9A9AA3]">
-            {brand.placeholders.email} · {brand.placeholders.city}
+            {brand.placeholders.email} · WhatsApp {brand.placeholders.whatsappDisplay}{" "}
+            (dummy) · {brand.placeholders.city}
           </p>
         </section>
       )}

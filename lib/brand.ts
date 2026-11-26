@@ -99,22 +99,22 @@ export const designs = [
   {
     id: "A" as const,
     label: "Classic Luxury",
-    subtitle: "Black · silver · warm gold bokeh",
+    subtitle: "Centred maison · gold on black · ceremonial",
   },
   {
     id: "B" as const,
     label: "Modern Minimal",
-    subtitle: "Mist paper · oxidised silver · soft rose",
+    subtitle: "Split hero · sticky light nav · airy shop",
   },
   {
     id: "C" as const,
     label: "Premium Editorial",
-    subtitle: "Charcoal · emerald gem · rose accents",
+    subtitle: "Magazine masthead · oversized type · lookbook",
   },
   {
     id: "D" as const,
     label: "Contemporary Indian",
-    subtitle: "Forest green · marigold · lotus",
+    subtitle: "Forest immersion · lotus · storytelling",
   },
 ];
 

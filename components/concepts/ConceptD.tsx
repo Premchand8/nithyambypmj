@@ -9,11 +9,19 @@ import {
   products,
   sampleTestimonials,
 } from "@/lib/products";
+import { HeroBanner } from "@/components/shared/HeroBanner";
 import { ProductCard } from "@/components/shared/ProductCard";
 import { SampleBadge } from "@/components/shared/SampleBadge";
-import { BagSearchIcons } from "@/components/shared/SiteIcons";
+import { SiteHeader } from "@/components/shared/SiteHeader";
 import { WhatsAppButton } from "@/components/shared/WhatsAppButton";
 import type { ConceptProps } from "./types";
+
+const links = [
+  { id: "home" as const, label: "Home" },
+  { id: "shop" as const, label: "Collection" },
+  { id: "about" as const, label: "Our Craft" },
+  { id: "contact" as const, label: "Visit" },
+];
 
 function LotusMark({ className = "" }: { className?: string }) {
   return (
@@ -34,96 +42,55 @@ function LotusMark({ className = "" }: { className?: string }) {
   );
 }
 
-function Nav({
-  page,
-  onNavigate,
-}: Pick<ConceptProps, "page" | "onNavigate">) {
-  const links = [
-    ["home", "Home"],
-    ["shop", "Collection"],
-    ["about", "Our Craft"],
-    ["contact", "Visit"],
-  ] as const;
-
-  return (
-    <header className="absolute inset-x-0 top-0 z-20">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-5 md:px-8">
-        <button type="button" onClick={() => onNavigate("home")} className="flex items-center gap-2">
-          <Image
-            src={brand.logos.light}
-            alt="Nithyam by PMJ Jewels"
-            width={200}
-            height={60}
-            className="h-10 w-auto"
-            priority
-          />
-        </button>
-        <nav className="hidden items-center gap-6 text-[11px] uppercase tracking-[0.18em] text-[#F4F4F6]/85 md:flex">
-          {links.map(([id, label]) => (
-            <button
-              key={id}
-              type="button"
-              onClick={() => onNavigate(id)}
-              className={
-                page === id
-                  ? "text-[#E8C17A]"
-                  : "hover:text-[#E8C17A]"
-              }
-            >
-              {label}
-            </button>
-          ))}
-        </nav>
-        <BagSearchIcons tone="dark" />
-      </div>
-    </header>
-  );
-}
-
+/** Persona D — Contemporary Indian: forest immersion, lotus, storytelling sections */
 export function ConceptD({
   page,
   onNavigate,
   activeProduct,
   onSelectProduct,
 }: ConceptProps) {
+  const headerTone = page === "home" ? "overlay" : "solid-forest";
+
   return (
-    <div className="concept-d min-h-full bg-[#1B3022] text-[#F4F4F6] [--font-display:var(--font-cormorant)]">
-      <Nav page={page} onNavigate={onNavigate} />
+    <div className="relative min-h-full bg-[#1B3022] text-[#F4F4F6] [--font-display:var(--font-cormorant)]">
+      <SiteHeader
+        page={page}
+        onNavigate={onNavigate}
+        links={links}
+        logoSrc={brand.logos.light}
+        tone={headerTone}
+      />
 
       {page === "home" && (
         <>
-          <section className="relative min-h-[100svh] overflow-hidden">
-            <Image
-              src={heroImages.D}
-              alt="Nithyam contemporary Indian silver"
-              fill
-              priority
-              className="object-cover"
-              sizes="100vw"
-            />
-            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(27,48,34,0.25),rgba(27,48,34,0.82))]" />
-            <div className="relative z-10 flex min-h-[100svh] flex-col items-center justify-center px-6 pb-20 pt-28 text-center">
-              <LotusMark className="mb-4 h-12 w-12 text-[#E8C17A] animate-[fadeUp_700ms_ease_both]" />
+          <HeroBanner
+            src={heroImages.DAlt}
+            alt="Nithyam silver idols on forest green"
+            position="center bottom"
+            overlayClassName="bg-[radial-gradient(ellipse_at_center,rgba(27,48,34,0.15),rgba(27,48,34,0.82))]"
+          >
+            <div className="flex flex-1 flex-col items-center justify-center px-6 pb-16 pt-20 text-center md:pb-20 md:pt-24">
+              <LotusMark className="mb-4 h-11 w-11 text-[#E8C17A] animate-[fadeUp_700ms_ease_both]" />
               <Image
                 src={brand.logos.light}
                 alt="Nithyam"
                 width={380}
                 height={120}
-                className="h-14 w-auto md:h-20"
+                className="h-12 w-auto max-w-[80vw] object-contain md:h-16"
                 priority
               />
-              <h1 className="mt-8 max-w-2xl font-[family-name:var(--font-cormorant)] text-4xl leading-tight text-[#F8F4EC] md:text-6xl">
+              <h1 className="mt-8 max-w-2xl font-[family-name:var(--font-cormorant)] text-3xl leading-tight text-[#F8F4EC] sm:text-4xl md:text-6xl">
                 Silver for the home shrine
               </h1>
               <p className="mt-4 max-w-md text-sm leading-relaxed text-[#D5D8C8] md:text-base">
                 Contemporary Indian devotion — handcrafted silver by PMJ Jewels, rooted in
                 ritual, finished for today.
               </p>
-              <div className="mt-8 flex flex-wrap justify-center gap-3">
+              <div className="mt-9 flex flex-wrap justify-center gap-3">
                 <button
                   type="button"
                   onClick={() => onNavigate("shop")}
-                  className="bg-[#C9893A] px-7 py-3 text-[11px] uppercase tracking-[0.2em] text-[#1B3022] transition hover:brightness-105"
+                  className="bg-[#C9893A] px-7 py-3.5 text-[11px] uppercase tracking-[0.2em] text-[#1B3022] transition hover:brightness-105"
                 >
                   Discover the collection
                 </button>
@@ -133,23 +100,46 @@ export function ConceptD({
                 />
               </div>
             </div>
+          </HeroBanner>
+
+          {/* Storytelling: image left / copy right — not a product grid shell */}
+          <section className="grid lg:grid-cols-2">
+            <div className="relative min-h-[50svh] lg:min-h-[80svh]">
+              <Image
+                src={heroImages.D}
+                alt="Nithyam gift silver on green"
+                fill
+                className="object-cover"
+                sizes="50vw"
+              />
+            </div>
+            <div className="flex flex-col justify-center bg-[#15261B] px-6 py-16 sm:px-10 lg:px-16">
+              <LotusMark className="mb-4 h-8 w-8 text-[#E8C17A]" />
+              <h2 className="font-[family-name:var(--font-cormorant)] text-3xl text-[#F8F4EC] md:text-4xl">
+                Sacred & sculptural
+              </h2>
+              <p className="mt-5 max-w-md text-sm leading-7 text-[#D5D8C8]/90">
+                Forest studio light, oxidised silver, rose petals at the edge of frame —
+                the photography sets the palette for this concept.
+              </p>
+              <button
+                type="button"
+                onClick={() => onNavigate("shop")}
+                className="mt-8 w-fit text-xs uppercase tracking-[0.18em] text-[#E8C17A] underline underline-offset-8"
+              >
+                Browse pieces
+              </button>
+            </div>
           </section>
 
-          <section className="relative overflow-hidden px-5 py-20 md:px-8">
-            <div
-              className="pointer-events-none absolute inset-0 opacity-[0.07]"
-              style={{
-                backgroundImage:
-                  "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 8c1.5 4 3 7 3 10s-1 5-3 7c-2-2-3-4-3-7s1.5-6 3-10z' fill='%23E8C17A' fill-opacity='0.9'/%3E%3C/svg%3E\")",
-              }}
-            />
-            <div className="relative mx-auto max-w-6xl">
+          <section className="px-5 py-16 md:px-10 md:py-20">
+            <div className="mx-auto max-w-6xl">
               <div className="text-center">
                 <p className="text-[11px] uppercase tracking-[0.28em] text-[#E8C17A]">
-                  Sacred & sculptural
+                  From the atelier
                 </p>
                 <h2 className="mt-3 font-[family-name:var(--font-cormorant)] text-4xl text-[#F8F4EC]">
-                  From the atelier
+                  Featured offerings
                 </h2>
               </div>
               <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -168,7 +158,7 @@ export function ConceptD({
             </div>
           </section>
 
-          <section className="border-y border-[#E8C17A]/20 bg-[#15261B] px-5 py-16 md:px-8">
+          <section className="border-y border-[#E8C17A]/20 bg-[#15261B] px-5 py-16 md:px-10">
             <div className="mx-auto grid max-w-5xl gap-10 md:grid-cols-3">
               {sampleTestimonials.map((t) => (
                 <figure key={t.name} className="text-center">
@@ -187,7 +177,7 @@ export function ConceptD({
       )}
 
       {page === "shop" && (
-        <section className="px-5 pb-20 pt-28 md:px-8">
+        <section className="px-5 pb-20 pt-10 md:px-10 md:pb-24">
           <div className="mx-auto max-w-6xl">
             <div className="flex flex-col items-center text-center">
               <LotusMark className="h-10 w-10 text-[#E8C17A]" />
@@ -216,7 +206,7 @@ export function ConceptD({
       )}
 
       {page === "product" && (
-        <section className="px-5 pb-20 pt-28 md:px-8">
+        <section className="px-5 pb-20 pt-10 md:px-10 md:pb-24">
           <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-2">
             <div className="relative aspect-[4/5] overflow-hidden border border-[#E8C17A]/25">
               <Image
@@ -263,17 +253,16 @@ export function ConceptD({
       )}
 
       {page === "about" && (
-        <section className="px-5 pb-20 pt-28 md:px-8">
+        <section className="px-5 pb-20 pt-10 md:px-10 md:pb-24">
           <div className="mx-auto max-w-4xl text-center">
             <LotusMark className="mx-auto h-12 w-12 text-[#E8C17A]" />
             <h1 className="mt-6 font-[family-name:var(--font-cormorant)] text-4xl text-[#F8F4EC] md:text-5xl">
               Our craft
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-sm leading-7 text-[#D5D8C8]/90">
-              Nithyam is handcrafted silver by PMJ Jewels. The lotus in the wordmark and
-              the ceremonial photography guide this concept’s palette — forest greens and
-              marigold warmth drawn from the product imagery. Extended heritage narrative
-              and any certifications will be added only when confirmed.
+              Nithyam is handcrafted silver by PMJ Jewels. The lotus wordmark and ceremonial
+              photography guide this concept. Extended narrative and certifications only
+              when confirmed.
             </p>
             <div className="relative mx-auto mt-12 aspect-[16/9] max-w-3xl overflow-hidden border border-[#E8C17A]/20">
               <Image
@@ -289,7 +278,7 @@ export function ConceptD({
       )}
 
       {page === "contact" && (
-        <section className="px-5 pb-20 pt-28 md:px-8">
+        <section className="px-5 pb-20 pt-10 md:px-10 md:pb-24">
           <div className="mx-auto max-w-xl border border-[#E8C17A]/25 bg-[#15261B] px-6 py-12 text-center md:px-10">
             <LotusMark className="mx-auto h-10 w-10 text-[#E8C17A]" />
             <h1 className="mt-4 font-[family-name:var(--font-cormorant)] text-4xl text-[#F8F4EC]">
@@ -303,9 +292,7 @@ export function ConceptD({
               <p>WhatsApp {brand.placeholders.whatsappDisplay} (dummy)</p>
               <p>{brand.placeholders.city}</p>
             </div>
-            <WhatsAppButton
-              className="mt-8 !bg-[#C9893A] !text-[#1B3022]"
-            />
+            <WhatsAppButton className="mt-8 !bg-[#C9893A] !text-[#1B3022]" />
           </div>
         </section>
       )}
@@ -316,14 +303,12 @@ export function ConceptD({
           alt=""
           width={160}
           height={50}
-          className="mx-auto h-8 w-auto opacity-90"
+          className="mx-auto h-8 w-auto object-contain opacity-90"
         />
-        <p className="mt-4 text-xs tracking-[0.16em] text-[#C0C0C8]/70 uppercase">
+        <p className="mt-4 text-xs uppercase tracking-[0.16em] text-[#C0C0C8]/70">
           {brand.parentLine}
         </p>
-        <p className="mt-3 text-xs text-[#C0C0C8]/50">
-          Phase 1 stakeholder preview
-        </p>
+        <p className="mt-3 text-xs text-[#C0C0C8]/50">Phase 1 stakeholder preview</p>
       </footer>
     </div>
   );

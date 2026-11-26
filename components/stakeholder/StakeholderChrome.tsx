@@ -55,112 +55,95 @@ export function StakeholderChrome() {
 
   return (
     <div className="min-h-svh bg-[#0E0E10]">
-      {/* Internal stakeholder chrome — not part of the public site concepts */}
-      <div className="sticky top-0 z-50 border-b border-white/10 bg-[#121216]/95 text-white backdrop-blur">
-        <div className="mx-auto flex max-w-[1400px] flex-col gap-3 px-3 py-3 md:px-5">
-          <div className="flex flex-wrap items-center justify-between gap-3">
-            <div>
-              <p className="text-[10px] uppercase tracking-[0.22em] text-white/45">
-                Internal stakeholder preview
-              </p>
-              <p className="text-sm text-white/85">
-                Nithyam Phase 1 · compare four homepage concepts
-              </p>
-            </div>
-            <div className="flex flex-wrap items-center gap-2">
-              {hydrated && selected ? (
-                <span className="inline-flex items-center gap-1.5 rounded-sm border border-emerald-400/30 bg-emerald-400/10 px-3 py-1.5 text-xs text-emerald-200">
-                  <Check className="h-3.5 w-3.5" />
-                  Selected: Design {selected} —{" "}
-                  {designs.find((d) => d.id === selected)?.label}
-                </span>
-              ) : (
-                <span className="text-xs text-white/45">No design selected yet</span>
-              )}
-              <button
-                type="button"
-                onClick={() => setConfirmOpen(true)}
-                className="rounded-sm bg-white px-3 py-1.5 text-xs font-medium text-black transition hover:bg-white/90"
-              >
-                Select This Design
-              </button>
-              <button
-                type="button"
-                onClick={resetSelection}
-                className="inline-flex items-center gap-1 rounded-sm border border-white/20 px-3 py-1.5 text-xs text-white/80 hover:bg-white/5"
-              >
-                <RotateCcw className="h-3.5 w-3.5" />
-                Reset
-              </button>
-            </div>
-          </div>
-
-          <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
-            <div
-              role="tablist"
-              aria-label="Design concepts"
-              className="flex flex-wrap gap-1.5"
-            >
-              {designs.map((d) => (
-                <button
-                  key={d.id}
-                  type="button"
-                  role="tab"
-                  aria-selected={activeDesign === d.id}
-                  onClick={() => {
-                    setActiveDesign(d.id);
-                    setPage("home");
-                  }}
-                  className={`rounded-sm px-3 py-2 text-left transition ${
-                    activeDesign === d.id
-                      ? "bg-white text-black"
-                      : "bg-white/5 text-white/75 hover:bg-white/10"
-                  }`}
-                >
-                  <span className="block text-xs font-semibold tracking-wide">
-                    {d.id}. {d.label}
-                  </span>
-                  <span className="mt-0.5 hidden text-[10px] opacity-70 sm:block">
-                    {d.subtitle}
-                  </span>
-                </button>
-              ))}
-            </div>
-
-            <div
-              role="tablist"
-              aria-label="Page preview"
-              className="flex flex-wrap gap-1"
-            >
-              {previewPages.map((p) => (
-                <button
-                  key={p.id}
-                  type="button"
-                  role="tab"
-                  aria-selected={page === p.id}
-                  onClick={() => setPage(p.id)}
-                  className={`rounded-sm px-2.5 py-1.5 text-[11px] uppercase tracking-[0.12em] ${
-                    page === p.id
-                      ? "bg-[#302850] text-white"
-                      : "text-white/60 hover:bg-white/5 hover:text-white"
-                  }`}
-                >
-                  {p.label}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          <p className="text-[11px] text-white/40">
-            Viewing <span className="text-white/70">{activeMeta.label}</span>
-            {" · "}
-            This chrome is for internal review only and is not part of the public website.
-            No winning design is pre-selected.
+      {/* Internal-only chrome — slim bar; design switcher is a right-side select */}
+      <div className="sticky top-0 z-50 border-b border-white/10 bg-[#111114]/95 text-white backdrop-blur-md">
+        <div className="mx-auto flex h-14 w-full max-w-[1600px] items-center gap-3 px-4 md:px-6">
+          <p className="min-w-0 shrink truncate text-sm font-medium tracking-wide text-white/90">
+            Nithyam · Phase 1
           </p>
+
+          <div
+            className="ml-2 hidden min-w-0 items-center gap-0.5 md:flex"
+            aria-label="Page preview"
+          >
+            {previewPages.map((p) => (
+              <button
+                key={p.id}
+                type="button"
+                onClick={() => setPage(p.id)}
+                className={`rounded px-2.5 py-1 text-[11px] tracking-wide transition ${
+                  page === p.id
+                    ? "bg-white/15 text-white"
+                    : "text-white/45 hover:text-white/80"
+                }`}
+              >
+                {p.label}
+              </button>
+            ))}
+          </div>
+
+          <div className="ml-auto flex shrink-0 items-center gap-2">
+            {hydrated && selected ? (
+              <span className="hidden items-center gap-1 rounded border border-emerald-400/25 bg-emerald-400/10 px-2 py-1 text-[11px] text-emerald-200 xl:inline-flex">
+                <Check className="h-3 w-3" />
+                Saved {selected}
+              </span>
+            ) : null}
+
+            <label className="flex items-center gap-2 text-xs text-white/55">
+              <span className="sr-only md:not-sr-only md:inline">Design</span>
+              <select
+                value={activeDesign}
+                aria-label="Switch design concept A through D"
+                onChange={(e) => {
+                  setActiveDesign(e.target.value as DesignId);
+                  setPage("home");
+                }}
+                className="cursor-pointer rounded border border-white/20 bg-[#1A1A1F] py-1.5 pl-2 pr-8 text-xs text-white outline-none focus:border-white/40"
+              >
+                {designs.map((d) => (
+                  <option key={d.id} value={d.id}>
+                    {d.id} — {d.label}
+                  </option>
+                ))}
+              </select>
+            </label>
+
+            <button
+              type="button"
+              onClick={() => setConfirmOpen(true)}
+              className="rounded bg-white px-3 py-1.5 text-xs font-medium whitespace-nowrap text-black hover:bg-white/90"
+            >
+              Select This Design
+            </button>
+            <button
+              type="button"
+              onClick={resetSelection}
+              aria-label="Reset selection"
+              className="rounded border border-white/15 p-1.5 text-white/70 hover:bg-white/5 hover:text-white"
+            >
+              <RotateCcw className="h-3.5 w-3.5" />
+            </button>
+          </div>
+        </div>
+
+        <div className="flex gap-1 overflow-x-auto border-t border-white/5 px-4 py-2 md:hidden">
+          {previewPages.map((p) => (
+            <button
+              key={p.id}
+              type="button"
+              onClick={() => setPage(p.id)}
+              className={`shrink-0 rounded px-2.5 py-1 text-[11px] ${
+                page === p.id ? "bg-white/15 text-white" : "text-white/45"
+              }`}
+            >
+              {p.label}
+            </button>
+          ))}
         </div>
       </div>
 
-      <div className="mx-auto max-w-[1400px]">
+      <div className="w-full">
         {activeDesign === "A" && <ConceptA {...conceptProps} />}
         {activeDesign === "B" && <ConceptB {...conceptProps} />}
         {activeDesign === "C" && <ConceptC {...conceptProps} />}
@@ -174,23 +157,25 @@ export function StakeholderChrome() {
           aria-modal="true"
           aria-labelledby="confirm-select-title"
         >
-          <div className="w-full max-w-md rounded-sm border border-white/15 bg-[#1A1A1F] p-6 text-white shadow-2xl">
+          <div className="w-full max-w-md rounded border border-white/15 bg-[#1A1A1F] p-6 text-white">
             <div className="flex items-start justify-between gap-4">
               <div>
                 <h2 id="confirm-select-title" className="text-lg font-medium">
                   Confirm design selection?
                 </h2>
                 <p className="mt-2 text-sm text-white/65">
-                  Save <strong>Design {activeDesign} — {activeMeta.label}</strong> to this
-                  browser (localStorage). Stakeholders can reset anytime. This does not
-                  publish or prefer a winner across the team.
+                  Save{" "}
+                  <strong>
+                    Design {activeDesign} — {activeMeta.label}
+                  </strong>{" "}
+                  in this browser (localStorage). No winner is published for the team.
                 </p>
               </div>
               <button
                 type="button"
                 aria-label="Close"
                 onClick={() => setConfirmOpen(false)}
-                className="rounded-sm p-1 text-white/60 hover:bg-white/10 hover:text-white"
+                className="rounded p-1 text-white/60 hover:bg-white/10"
               >
                 <X className="h-4 w-4" />
               </button>
@@ -199,16 +184,16 @@ export function StakeholderChrome() {
               <button
                 type="button"
                 onClick={() => setConfirmOpen(false)}
-                className="rounded-sm border border-white/20 px-4 py-2 text-sm text-white/80"
+                className="rounded border border-white/20 px-4 py-2 text-sm text-white/80"
               >
                 Cancel
               </button>
               <button
                 type="button"
                 onClick={confirmSelection}
-                className="rounded-sm bg-white px-4 py-2 text-sm font-medium text-black"
+                className="rounded bg-white px-4 py-2 text-sm font-medium text-black"
               >
-                Confirm selection
+                Confirm
               </button>
             </div>
           </div>

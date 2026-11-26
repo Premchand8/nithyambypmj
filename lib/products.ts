@@ -133,12 +133,17 @@ export const products: Product[] = [
 ];
 
 export const featuredProducts = products.slice(0, 6);
+
+/** Full-viewport heroes: landscape brand crops + silver lifestyle (see heroes/SOURCES) */
 export const heroImages = {
-  A: "/references/04.webp",
-  B: "/references/SIDL909767.webp",
-  C: "/references/01.webp",
-  D: "/references/07.webp",
-  shopBanner: "/references/SGFT920794.webp",
+  A: "/references/heroes/brand-hero-jhoola.jpg",
+  B: "/references/heroes/hero-silver-hands.jpg",
+  BProduct: "/references/heroes/brand-hero-idol.jpg",
+  C: "/references/heroes/brand-hero-trinity.jpg",
+  CAlt: "/references/heroes/hero-lifestyle-rose.jpg",
+  D: "/references/heroes/brand-hero-gift.jpg",
+  DAlt: "/references/heroes/brand-hero-trinity.jpg",
+  shopBanner: "/references/heroes/brand-hero-feature.jpg",
   about: "/references/02.webp",
 };
 

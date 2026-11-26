@@ -8,7 +8,7 @@ export const products: Product[] = [
     name: "Divine Trinity Idols",
     image: "/references/01.webp",
     samplePriceInr: 18999,
-    blurb: "Lakshmi, Ganesha & Saraswati in antique silver finish.",
+    blurb: "Lakshmi, Ganesha and Saraswati in an antique silver finish.",
   },
   {
     id: "p2",
@@ -32,7 +32,7 @@ export const products: Product[] = [
     name: "Gift Set SGFT920794",
     image: "/references/SGFT920794.webp",
     samplePriceInr: 9999,
-    blurb: "Gift-ready silver set for festive occasions.",
+    blurb: "Gift-ready silver set for festivals and special occasions.",
   },
   {
     id: "p5",
@@ -48,7 +48,7 @@ export const products: Product[] = [
     name: "Featured Piece 07",
     image: "/references/07.webp",
     samplePriceInr: 14999,
-    blurb: "Signature silver piece for the home shrine.",
+    blurb: "Signature silver piece for the home mandir.",
   },
   {
     id: "p7",
@@ -56,7 +56,7 @@ export const products: Product[] = [
     name: "Accent Piece SACS913290",
     image: "/references/SACS913290.webp",
     samplePriceInr: 8799,
-    blurb: "Sculptural silver accent with refined finish.",
+    blurb: "Sculptural silver accent with a refined finish.",
   },
   {
     id: "p8",
@@ -72,7 +72,7 @@ export const products: Product[] = [
     name: "Gift Set SGFT1101523",
     image: "/references/SGFT1101523.webp",
     samplePriceInr: 11999,
-    blurb: "Curated silver gift ensemble.",
+    blurb: "A curated silver gift set, ready to present.",
   },
   {
     id: "p10",
@@ -88,7 +88,7 @@ export const products: Product[] = [
     name: "Lifestyle Feature 02",
     image: "/references/02.webp",
     samplePriceInr: 16999,
-    blurb: "Photographed in a quiet, ceremonial setting.",
+    blurb: "Captured in a quiet, ceremonial setting.",
   },
   {
     id: "p12",
@@ -128,7 +128,7 @@ export const products: Product[] = [
     name: "Figurine SDPM870064",
     image: "/references/SDPM870064.webp",
     samplePriceInr: 6899,
-    blurb: "Sculptural silver figurine for the home shrine.",
+    blurb: "Sculptural silver figurine for the home mandir.",
   },
 ];
 
@@ -149,17 +149,20 @@ export const heroImages = {
 
 export const sampleTestimonials = [
   {
-    quote: "The oxidised finish feels heirloom — quiet luxury for our pooja room.",
+    quote:
+      "The oxidised finish feels like an heirloom — quiet luxury for our pooja room.",
     name: "Ananya R.",
     note: "Sample testimonial",
   },
   {
-    quote: "Packaging and detail exceeded what I expected for silver idols.",
+    quote:
+      "Packaging and detailing were better than I expected for silver idols.",
     name: "Karthik M.",
     note: "Sample testimonial",
   },
   {
-    quote: "A thoughtful gift — craftsmanship shows in every petal and chain.",
+    quote:
+      "A thoughtful gift — the craftsmanship shows in every petal and chain.",
     name: "Meera S.",
     note: "Sample testimonial",
   },
@@ -171,8 +174,8 @@ export function formatSamplePrice(inr: number) {
 
 export function whatsappEnquiryUrl(sku?: string) {
   const text = sku
-    ? `Hello Nithyam, I would like to enquire about ${sku}.`
-    : "Hello Nithyam, I would like to enquire about your silver collection.";
+    ? `Namaste Nithyam, I would like to enquire about ${sku}.`
+    : "Namaste Nithyam, I would like to enquire about your silver jewellery collection.";
   // Dummy preview number (+91 98765 43210) — replace with live WhatsApp when ready
   return `https://wa.me/919876543210?text=${encodeURIComponent(text)}`;
 }

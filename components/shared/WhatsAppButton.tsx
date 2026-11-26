@@ -10,7 +10,7 @@ type Props = {
 
 export function WhatsAppButton({
   sku,
-  label = "Enquire on WhatsApp",
+  label = "Enquire on WhatsApp", // Indian English CTA
   className = "",
   variant = "solid",
 }: Props) {

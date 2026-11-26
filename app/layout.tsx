@@ -26,7 +26,7 @@ const instrument = Instrument_Serif({
 export const metadata: Metadata = {
   title: "Nithyam by PMJ Jewels — Phase 1 Design Concepts",
   description:
-    "Internal stakeholder preview of four homepage concepts for Nithyam handcrafted silver by PMJ Jewels.",
+    "Internal stakeholder preview of four homepage concepts for Nithyam handcrafted silver jewellery by PMJ Jewels.",
 };
 
 export default function RootLayout({
@@ -35,7 +35,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en-IN">
       <body
         className={`${cormorant.variable} ${outfit.variable} ${instrument.variable} antialiased`}
       >

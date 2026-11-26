@@ -19,7 +19,7 @@ import type { ConceptProps } from "./types";
 const links = [
   { id: "home" as const, label: "Home" },
   { id: "shop" as const, label: "Collection" },
-  { id: "about" as const, label: "Maison" },
+  { id: "about" as const, label: "Our story" },
   { id: "contact" as const, label: "Contact" },
 ];
 
@@ -40,7 +40,6 @@ export function ConceptA({
         links={links}
         logoSrc={brand.logos.light}
         tone={headerTone}
-        logoCentered
       />
 
       {page === "home" && (
@@ -49,48 +48,32 @@ export function ConceptA({
             src={heroImages.A}
             alt="Nithyam silver craft — Krishna jhoola detail"
             position="center 40%"
-            overlayClassName="bg-[radial-gradient(ellipse_at_center,rgba(10,10,10,0.2)_0%,rgba(10,10,10,0.75)_75%)]"
+            overlayClassName="bg-[radial-gradient(ellipse_at_center,rgba(10,10,10,0.15)_0%,rgba(10,10,10,0.72)_75%)]"
           >
-            <div className="flex flex-1 flex-col items-center justify-center px-6 pb-16 pt-20 text-center md:pb-20 md:pt-24">
-              <div className="mb-5 h-px w-14 bg-[#B8883A]/80" />
-              <Image
-                src={brand.logos.light}
-                alt="Nithyam"
-                width={440}
-                height={140}
-                className="h-16 w-auto max-w-[85vw] object-contain animate-[fadeUp_900ms_ease_both] md:h-24"
-                priority
-              />
-              <p className="mt-5 text-[10px] uppercase tracking-[0.32em] text-[#E8C17A] sm:text-[11px]">
-                {brand.parentLine}
-              </p>
-              <h1 className="mt-7 max-w-2xl font-[family-name:var(--font-cormorant)] text-3xl font-light leading-snug tracking-[0.04em] text-white sm:text-4xl md:text-5xl">
-                Heirloom silver, quietly radiant
+            <div className="flex flex-1 flex-col items-center justify-end px-6 pb-16 pt-28 text-center sm:pb-20 md:pb-24">
+              <h1 className="max-w-2xl font-[family-name:var(--font-cormorant)] text-3xl font-light leading-snug tracking-[0.04em] text-white animate-[fadeUp_900ms_ease_both] sm:text-4xl md:text-5xl">
+                Heirloom silver, crafted with grace
               </h1>
               <p className="mt-4 max-w-md text-sm leading-relaxed text-white/70 md:text-base">
-                A classic maison presentation of handcrafted silver for the sacred home.
+                Handcrafted silver jewellery for the sacred home.
               </p>
-              <div className="mt-9 flex flex-wrap justify-center gap-3">
-                <button
-                  type="button"
-                  onClick={() => onNavigate("shop")}
-                  className="border border-[#B8883A] bg-[#B8883A]/10 px-7 py-3.5 text-[11px] uppercase tracking-[0.22em] text-[#E8C17A] transition hover:bg-[#B8883A] hover:text-[#0A0A0A]"
-                >
-                  View the collection
-                </button>
-                <WhatsAppButton variant="outline" className="border-white/30 text-white" />
-              </div>
-              <div className="mt-9 h-px w-14 bg-[#B8883A]/80" />
+              <button
+                type="button"
+                onClick={() => onNavigate("shop")}
+                className="mt-8 border border-[#B8883A] bg-[#B8883A]/10 px-7 py-3.5 text-[11px] uppercase tracking-[0.22em] text-[#E8C17A] transition hover:bg-[#B8883A] hover:text-[#0A0A0A]"
+              >
+                Explore the collection
+              </button>
             </div>
           </HeroBanner>
 
           <section className="mx-auto max-w-6xl px-5 py-20 md:px-10 md:py-24">
             <div className="mx-auto max-w-xl text-center">
               <p className="text-[10px] uppercase tracking-[0.32em] text-[#B8883A]">
-                Signature pieces
+                Chosen pieces
               </p>
               <h2 className="mt-4 font-[family-name:var(--font-cormorant)] text-4xl text-white md:text-5xl">
-                The cabinet
+                From our collection
               </h2>
             </div>
             <div className="mt-14 grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:mt-16 lg:grid-cols-3">
@@ -109,19 +92,14 @@ export function ConceptA({
           </section>
 
           <section className="border-y border-[#B8883A]/20 bg-[#0F0F0F] px-5 py-16 md:px-10 md:py-20">
-            <div className="mx-auto grid max-w-5xl gap-10 md:grid-cols-3 md:gap-12">
-              {sampleTestimonials.map((t) => (
-                <figure key={t.name} className="text-center">
-                  <div className="mx-auto mb-5 h-px w-10 bg-[#B8883A]/60" />
-                  <blockquote className="font-[family-name:var(--font-cormorant)] text-xl italic leading-relaxed text-white/85">
-                    “{t.quote}”
-                  </blockquote>
-                  <figcaption className="mt-5 text-[10px] uppercase tracking-[0.2em] text-white/45">
-                    {t.name} · <SampleBadge />
-                  </figcaption>
-                </figure>
-              ))}
-            </div>
+            <figure className="mx-auto max-w-2xl text-center">
+              <blockquote className="font-[family-name:var(--font-cormorant)] text-2xl italic leading-relaxed text-white/85 md:text-3xl">
+                “{sampleTestimonials[0].quote}”
+              </blockquote>
+              <figcaption className="mt-5 text-[10px] uppercase tracking-[0.2em] text-white/45">
+                {sampleTestimonials[0].name} · <SampleBadge />
+              </figcaption>
+            </figure>
           </section>
         </>
       )}
@@ -133,7 +111,7 @@ export function ConceptA({
               Catalogue
             </p>
             <h1 className="mt-3 font-[family-name:var(--font-cormorant)] text-4xl text-white md:text-6xl">
-              Collection
+              Our collection
             </h1>
             <div className="mt-14 grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:mt-16 lg:grid-cols-3">
               {products.map((p) => (
@@ -188,7 +166,7 @@ export function ConceptA({
                   onClick={() => onNavigate("shop")}
                   className="border border-white/25 px-5 py-3 text-sm text-white/80"
                 >
-                  Return to collection
+                  Back to collection
                 </button>
               </div>
             </div>
@@ -210,15 +188,14 @@ export function ConceptA({
             </div>
             <div>
               <p className="text-[10px] uppercase tracking-[0.28em] text-[#B8883A]">
-                The maison
+                Our story
               </p>
               <h1 className="mt-4 font-[family-name:var(--font-cormorant)] text-4xl text-white md:text-5xl">
                 Nithyam
               </h1>
               <p className="mt-6 text-sm leading-8 text-white/70">
-                Handcrafted silver by PMJ Jewels. This preview uses only confirmed brand
-                language from the logo lockup — full maison narrative arrives after
-                stakeholder copy approval.
+                Nithyam is handcrafted silver jewellery by PMJ Jewels — crafted with care
+                for the sacred home. We will share more of our story here soon.
               </p>
             </div>
           </div>
@@ -228,30 +205,23 @@ export function ConceptA({
       {page === "contact" && (
         <section className="flex min-h-[70svh] flex-col items-center justify-center px-5 py-20 text-center md:px-10">
           <p className="text-[10px] uppercase tracking-[0.28em] text-[#B8883A]">
-            Enquire
+            Get in touch
           </p>
           <h1 className="mt-4 font-[family-name:var(--font-cormorant)] text-4xl text-white md:text-5xl">
-            Contact
+            Contact us
           </h1>
           <div className="mt-10 space-y-2 text-sm text-white/75">
             <p>{brand.placeholders.email}</p>
-            <p>WhatsApp {brand.placeholders.whatsappDisplay} (dummy)</p>
+            <p>WhatsApp {brand.placeholders.whatsappDisplay} (sample number)</p>
             <p>{brand.placeholders.city}</p>
           </div>
           <WhatsAppButton className="mt-10" />
         </section>
       )}
 
-      <footer className="border-t border-[#B8883A]/15 px-5 py-12 text-center md:px-10">
-        <Image
-          src={brand.logos.light}
-          alt=""
-          width={160}
-          height={48}
-          className="mx-auto h-8 w-auto object-contain opacity-90"
-        />
-        <p className="mt-4 text-[10px] uppercase tracking-[0.22em] text-white/40">
-          {brand.parentLine} · Phase 1 preview
+      <footer className="border-t border-[#B8883A]/15 px-5 py-10 text-center md:px-10">
+        <p className="text-[10px] uppercase tracking-[0.22em] text-white/40">
+          {brand.parentLine}
         </p>
       </footer>
     </div>

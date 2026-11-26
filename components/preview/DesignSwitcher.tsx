@@ -63,7 +63,7 @@ export function DesignSwitcher({ tone = "dark" }: Props) {
           className="absolute right-0 top-[calc(100%+0.5rem)] z-[70] w-[min(18rem,calc(100vw-2rem))] rounded-md border border-black/10 bg-white p-2 text-[#161616] shadow-xl"
         >
           <p className="px-2 pb-1.5 pt-1 text-[10px] uppercase tracking-[0.16em] text-[#8A8A92]">
-            Concept preview
+            Design preview
           </p>
           <ul className="space-y-0.5">
             {designs.map((d) => {
@@ -112,7 +112,7 @@ export function DesignSwitcher({ tone = "dark" }: Props) {
               }}
               className="flex-1 rounded-sm bg-[#161616] px-2 py-1.5 text-[11px] font-medium text-white hover:bg-black"
             >
-              Select this
+              Select this design
             </button>
             <button
               type="button"
@@ -127,11 +127,11 @@ export function DesignSwitcher({ tone = "dark" }: Props) {
           </div>
           {hydrated && selected ? (
             <p className="mt-1.5 px-1 text-[10px] text-[#8A8A92]">
-              Saved in browser: Design {selected}
+              Saved on this browser: Design {selected}
             </p>
           ) : (
             <p className="mt-1.5 px-1 text-[10px] text-[#8A8A92]">
-              Internal only · no winner pre-selected
+              For internal review only · no favourite chosen
             </p>
           )}
         </div>

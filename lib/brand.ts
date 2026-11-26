@@ -99,17 +99,17 @@ export const designs = [
   {
     id: "A" as const,
     label: "Classic Luxury",
-    subtitle: "Centred maison · gold on black · ceremonial",
+    subtitle: "Centred classic look · gold on black · ceremonial",
   },
   {
     id: "B" as const,
     label: "Modern Minimal",
-    subtitle: "Split hero · sticky light nav · airy shop",
+    subtitle: "Split hero · light navigation · airy shop",
   },
   {
     id: "C" as const,
     label: "Premium Editorial",
-    subtitle: "Magazine masthead · oversized type · lookbook",
+    subtitle: "Magazine masthead · bold type · lookbook",
   },
   {
     id: "D" as const,

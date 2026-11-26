@@ -19,7 +19,7 @@ import type { ConceptProps } from "./types";
 const links = [
   { id: "home" as const, label: "Home" },
   { id: "shop" as const, label: "Lookbook" },
-  { id: "about" as const, label: "Story" },
+  { id: "about" as const, label: "Our story" },
   { id: "contact" as const, label: "Contact" },
 ];
 
@@ -47,32 +47,25 @@ export function ConceptC({
           <HeroBanner
             src={heroImages.C}
             alt="Nithyam divine trinity — editorial hero"
-            position="center bottom"
-            overlayClassName="bg-gradient-to-t from-black via-black/40 to-black/55"
+            position="center 30%"
+            overlayClassName="bg-gradient-to-t from-black via-black/50 to-black/40"
           >
-            <div className="flex flex-1 flex-col justify-end px-5 pb-14 pt-24 sm:px-8 md:px-12 md:pb-20">
-              <p className="text-[10px] uppercase tracking-[0.35em] text-[#1F6B4F] sm:text-[11px]">
-                Volume 01 · Silver
-              </p>
-              <h1 className="mt-4 max-w-4xl font-[family-name:var(--font-instrument)] text-5xl leading-[0.92] tracking-tight text-white sm:text-6xl md:text-7xl lg:text-8xl">
+            <div className="flex flex-1 flex-col justify-end px-5 pb-16 pt-28 sm:px-8 sm:pb-20 md:px-12 md:pb-24">
+              <h1 className="max-w-4xl font-[family-name:var(--font-instrument)] text-5xl leading-[0.92] tracking-tight text-white sm:text-6xl md:text-7xl lg:text-8xl">
                 The silver
                 <br />
-                issue.
+                chapter.
               </h1>
               <p className="mt-5 max-w-md text-sm leading-relaxed text-white/70 md:text-base">
-                Photography-led preview of handcrafted silver by PMJ Jewels — type oversized,
-                commerce quiet.
+                Handcrafted silver jewellery by PMJ Jewels — photography first.
               </p>
-              <div className="mt-8 flex flex-wrap gap-3">
-                <button
-                  type="button"
-                  onClick={() => onNavigate("shop")}
-                  className="bg-white px-6 py-3.5 text-[11px] uppercase tracking-[0.22em] text-black"
-                >
-                  Enter the lookbook
-                </button>
-                <WhatsAppButton variant="outline" className="border-white/40 text-white" />
-              </div>
+              <button
+                type="button"
+                onClick={() => onNavigate("shop")}
+                className="mt-8 w-fit bg-white px-6 py-3.5 text-[11px] uppercase tracking-[0.22em] text-black"
+              >
+                Open the lookbook
+              </button>
             </div>
           </HeroBanner>
 
@@ -80,14 +73,12 @@ export function ConceptC({
             <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-12 lg:gap-12">
               <div className="lg:col-span-4 lg:sticky lg:top-24 lg:self-start">
                 <p className="text-[11px] uppercase tracking-[0.28em] text-[#1F6B4F]">
-                  In frame
+                  In focus
                 </p>
                 <h2 className="mt-4 font-[family-name:var(--font-instrument)] text-4xl leading-tight md:text-5xl">
-                  Pieces on set
+                  Pieces in frame
                 </h2>
-                <p className="mt-4 text-sm text-white/55">
-                  Sample prices for stakeholder context.
-                </p>
+                <p className="mt-4 text-sm text-white/55">Sample pricing only.</p>
               </div>
               <div className="grid gap-10 sm:grid-cols-2 lg:col-span-8 lg:gap-12">
                 {featuredProducts.slice(0, 4).map((p, i) => (
@@ -119,7 +110,7 @@ export function ConceptC({
             <div className="relative z-10 flex min-h-[70svh] items-end px-5 py-14 sm:px-8 md:px-12">
               <div className="max-w-3xl">
                 <p className="text-[11px] uppercase tracking-[0.28em] text-[#C4898E]">
-                  In their words
+                  What patrons say
                 </p>
                 <p className="mt-4 font-[family-name:var(--font-instrument)] text-3xl leading-snug md:text-4xl">
                   “{sampleTestimonials[0].quote}”
@@ -138,7 +129,7 @@ export function ConceptC({
           <h1 className="font-[family-name:var(--font-instrument)] text-5xl md:text-7xl">
             Lookbook
           </h1>
-          <p className="mt-3 text-sm text-white/55">Sample catalogue</p>
+          <p className="mt-3 text-sm text-white/55">Sample catalogue only</p>
           <div className="mt-12 columns-1 gap-8 sm:columns-2 lg:mt-14 lg:columns-3">
             {products.map((p, i) => (
               <button
@@ -217,7 +208,7 @@ export function ConceptC({
                 onClick={() => onNavigate("shop")}
                 className="border border-white/25 px-5 py-3 text-sm"
               >
-                Back to lookbook
+                Return to lookbook
               </button>
             </div>
           </div>
@@ -232,8 +223,8 @@ export function ConceptC({
             </h1>
             <div>
               <p className="text-base leading-8 text-white/70">
-                Nithyam is handcrafted silver by PMJ Jewels. Editorial layout only —
-                long-form copy replaces this placeholder once approved.
+                Nithyam is handcrafted silver jewellery by PMJ Jewels. A fuller brand story
+                will follow on this page soon.
               </p>
               <div className="relative mt-10 aspect-[4/5] overflow-hidden">
                 <Image
@@ -252,14 +243,14 @@ export function ConceptC({
       {page === "contact" && (
         <section className="flex min-h-[70svh] flex-col justify-center px-5 py-20 sm:px-8 md:px-12">
           <h1 className="font-[family-name:var(--font-instrument)] text-5xl md:text-7xl lg:text-8xl">
-            Say hello
+            Do get in touch
           </h1>
           <p className="mt-6 max-w-md text-sm text-white/60">
-            Placeholder contact. WhatsApp enquire uses a dummy number.
+            Sample contact details for layout review. WhatsApp uses a sample number.
           </p>
           <div className="mt-10 space-y-2 text-lg text-white/80">
             <p>{brand.placeholders.email}</p>
-            <p>WhatsApp {brand.placeholders.whatsappDisplay} (dummy)</p>
+            <p>WhatsApp {brand.placeholders.whatsappDisplay} (sample number)</p>
             <p>{brand.placeholders.city}</p>
           </div>
           <WhatsAppButton className="mt-10 w-fit" />

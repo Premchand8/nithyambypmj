@@ -8,6 +8,7 @@ import {
   PreviewProvider,
   usePreview,
 } from "@/components/preview/PreviewContext";
+import { EnquiryPopup } from "@/components/shared/EnquiryPopup";
 
 function PreviewCanvas() {
   const {
@@ -35,6 +36,7 @@ function PreviewCanvas() {
       {activeDesign === "B" && <ConceptB {...conceptProps} />}
       {activeDesign === "C" && <ConceptC {...conceptProps} />}
       {activeDesign === "D" && <ConceptD {...conceptProps} />}
+      <EnquiryPopup active={page === "home"} design={activeDesign} />
     </div>
   );
 }

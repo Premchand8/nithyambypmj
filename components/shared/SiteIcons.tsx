@@ -2,8 +2,9 @@
 
 import { Search, ShoppingBag } from "lucide-react";
 import { DesignSwitcher } from "@/components/preview/DesignSwitcher";
+import { SilverRateControl } from "@/components/shared/SilverRateControl";
 
-/** Visual-only bag & search + subtle design switcher beside bag */
+/** Top-right tools: silver rate, search, bag, subtle design switcher */
 export function BagSearchIcons({
   className = "",
   tone = "light",
@@ -16,6 +17,7 @@ export function BagSearchIcons({
   const colour = tone === "dark" ? "text-white" : "text-current";
   return (
     <div className={`flex items-center gap-1.5 sm:gap-2 ${colour} ${className}`}>
+      <SilverRateControl tone={tone} />
       <button
         type="button"
         aria-label="Search (visual preview)"

@@ -57,26 +57,23 @@ export function SilverRateControl({ tone = "dark" }: Props) {
         aria-expanded={open}
         aria-haspopup="dialog"
         aria-label={`Today’s silver rate, Hyderabad, ${formatInr(rates.today.perGramInr, 1)} per gram`}
-        className={`inline-flex h-9 items-center gap-1.5 border-b px-0.5 transition ${trigger} ${triggerRule}`}
+        className={`inline-flex h-8 max-w-[7.25rem] items-center gap-1 border-b px-0.5 transition sm:h-9 sm:max-w-none sm:gap-1.5 ${trigger} ${triggerRule}`}
       >
-        <span className="hidden text-[10px] uppercase tracking-[0.16em] opacity-80 sm:inline">
+        <span className="hidden text-[10px] uppercase tracking-[0.16em] opacity-80 md:inline">
           Silver rate
-        </span>
-        <span className="text-[10px] uppercase tracking-[0.16em] opacity-80 sm:hidden">
-          Silver
         </span>
         <span className="text-[12px] font-medium tabular-nums tracking-tight">
           {formatInr(rates.today.perGramInr, 1)}
           <span className="font-normal opacity-65">/g</span>
         </span>
         <ChevronDown
-          className={`h-3 w-3 opacity-60 transition ${open ? "rotate-180" : ""}`}
+          className={`h-3 w-3 shrink-0 opacity-60 transition ${open ? "rotate-180" : ""}`}
           aria-hidden
         />
       </button>
 
       {open ? (
-        <div className="fixed inset-0 z-[70] flex items-end justify-center p-0 sm:items-center sm:p-6">
+        <div className="fixed inset-0 z-[80] flex items-end justify-center p-0 pb-[5.5rem] sm:items-center sm:p-6 sm:pb-6">
           <button
             type="button"
             className="absolute inset-0 bg-black/55 backdrop-blur-[2px]"
@@ -87,7 +84,7 @@ export function SilverRateControl({ tone = "dark" }: Props) {
             role="dialog"
             aria-modal="true"
             aria-labelledby={titleId}
-            className={`relative z-10 flex max-h-[92vh] w-full max-w-xl flex-col overflow-hidden rounded-t-md border sm:rounded-sm ${modal}`}
+            className={`relative z-10 flex max-h-[min(85vh,calc(100svh-6.5rem))] w-full max-w-xl flex-col overflow-hidden rounded-t-md border sm:max-h-[min(92vh,40rem)] sm:rounded-sm ${modal}`}
           >
             <div
               className={`flex shrink-0 items-start justify-between gap-4 border-b px-5 py-5 sm:px-7 sm:py-6 ${hairline}`}

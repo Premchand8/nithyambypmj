@@ -16,12 +16,12 @@ export function BagSearchIcons({
 }) {
   const colour = tone === "dark" ? "text-white" : "text-current";
   return (
-    <div className={`flex items-center gap-1.5 sm:gap-2 ${colour} ${className}`}>
+    <div className={`flex items-center gap-1 sm:gap-2 ${colour} ${className}`}>
       <SilverRateControl tone={tone} />
       <button
         type="button"
         aria-label="Search (visual preview)"
-        className="rounded-sm p-1.5 opacity-80 transition hover:opacity-100"
+        className="hidden rounded-sm p-1.5 opacity-80 transition hover:opacity-100 sm:inline-flex"
       >
         <Search className="h-4 w-4" strokeWidth={1.5} />
       </button>

@@ -152,7 +152,7 @@ export function SiteHeader({
         </nav>
 
         <div
-          className={`relative z-20 ml-auto flex items-center gap-1 pl-[min(36vw,220px)] sm:gap-2 ${pe}`}
+          className={`relative z-20 ml-auto flex max-w-[46%] items-center justify-end gap-0.5 pl-2 sm:max-w-none sm:gap-2 sm:pl-[min(30vw,200px)] ${pe}`}
         >
           <BagSearchIcons tone={styles.icon} />
           <button

@@ -118,8 +118,53 @@ export function SiteHeader({
 
   return (
     <header className={`${styles.bar} ${className}`}>
-      <div className="relative mx-auto flex h-[4.5rem] w-full max-w-[1400px] items-center px-4 sm:h-20 sm:px-6 md:px-8">
-        {/* True viewport-centred logo (not skewed by asymmetric side tools) */}
+      {/* Mobile: 3-column grid — silver | full logo | tools (no overlap) */}
+      <div
+        className={`mx-auto grid h-[4.5rem] w-full max-w-[1400px] grid-cols-[minmax(4.5rem,1fr)_auto_minmax(4.5rem,1fr)] items-center gap-1.5 px-2.5 sm:h-20 sm:gap-2 sm:px-4 lg:hidden ${pe}`}
+      >
+        <div className="flex min-w-0 items-center justify-start">
+          {showMobileSilver ? (
+            <SilverRateControl
+              tone={styles.icon}
+              onOpen={() => go("silver")}
+              placement="under-menu"
+            />
+          ) : null}
+        </div>
+
+        <button
+          type="button"
+          onClick={() => go("home")}
+          className="justify-self-center"
+          aria-label="Nithyam home"
+        >
+          <Image
+            src={logoSrc}
+            alt="Nithyam by PMJ Jewels"
+            width={320}
+            height={96}
+            className="h-9 w-auto max-w-[min(46vw,11.5rem)] object-contain sm:h-11 sm:max-w-[14rem]"
+            priority
+          />
+        </button>
+
+        <div className="flex min-w-0 items-center justify-end gap-0">
+          <BagSearchIcons tone={styles.icon} compact />
+          <button
+            type="button"
+            className={`inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-sm ${styles.link}`}
+            aria-expanded={open}
+            aria-controls="site-mobile-nav"
+            aria-label={open ? "Close menu" : "Open menu"}
+            onClick={() => setOpen((v) => !v)}
+          >
+            {open ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
+          </button>
+        </div>
+      </div>
+
+      {/* Desktop: centred logo + nav left / tools right */}
+      <div className="relative mx-auto hidden h-20 w-full max-w-[1400px] items-center px-6 md:px-8 lg:flex">
         <button
           type="button"
           onClick={() => go("home")}
@@ -131,13 +176,13 @@ export function SiteHeader({
             alt="Nithyam by PMJ Jewels"
             width={320}
             height={96}
-            className="h-11 w-auto max-w-[min(52vw,260px)] object-contain sm:h-12 sm:max-w-[280px] md:h-14 md:max-w-[320px]"
+            className="h-14 w-auto max-w-[320px] object-contain"
             priority
           />
         </button>
 
         <nav
-          className={`relative z-20 hidden min-w-0 items-center gap-5 pr-[min(30vw,180px)] lg:flex xl:gap-7 ${pe}`}
+          className={`relative z-20 flex min-w-0 items-center gap-5 pr-[min(30vw,180px)] xl:gap-7 ${pe}`}
           aria-label="Primary"
         >
           {links.map((link) => (
@@ -155,42 +200,16 @@ export function SiteHeader({
         </nav>
 
         <div
-          className={`relative z-20 ml-auto flex items-center justify-end gap-0.5 pl-2 sm:gap-2 sm:pl-[min(30vw,200px)] ${pe}`}
-        >
-          {/* Desktop: silver rate top-right */}
-          <div className="hidden lg:block">
-            <SilverRateControl
-              tone={styles.icon}
-              onOpen={() => go("silver")}
-              placement="header"
-            />
-          </div>
-          <BagSearchIcons tone={styles.icon} />
-          <button
-            type="button"
-            className={`inline-flex h-10 w-10 items-center justify-center rounded-sm lg:hidden ${styles.link}`}
-            aria-expanded={open}
-            aria-controls="site-mobile-nav"
-            aria-label={open ? "Close menu" : "Open menu"}
-            onClick={() => setOpen((v) => !v)}
-          >
-            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-          </button>
-        </div>
-      </div>
-
-      {/* Mobile: silver chip at left corner of the header — no header height growth */}
-      {showMobileSilver ? (
-        <div
-          className={`pointer-events-auto absolute left-3 top-1/2 z-30 -translate-y-1/2 sm:left-5 lg:hidden ${pe}`}
+          className={`relative z-20 ml-auto flex items-center justify-end gap-2 pl-[min(30vw,200px)] ${pe}`}
         >
           <SilverRateControl
             tone={styles.icon}
             onOpen={() => go("silver")}
-            placement="under-menu"
+            placement="header"
           />
+          <BagSearchIcons tone={styles.icon} />
         </div>
-      ) : null}
+      </div>
 
       {open ? (
         <div

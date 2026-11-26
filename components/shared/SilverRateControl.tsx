@@ -7,13 +7,13 @@ type Props = {
   tone?: "light" | "dark";
   /** Opens the silver rates page/view */
   onOpen: () => void;
-  /** Compact chip for mobile under-hamburger placement */
+  /** Compact chip for mobile header left */
   placement?: "header" | "under-menu";
 };
 
 /**
  * Silver rate trigger — opens the dedicated silver rates page.
- * Header (desktop) or under-hamburger (mobile).
+ * Desktop: labelled control. Mobile: compact price chip.
  */
 export function SilverRateControl({
   tone = "dark",
@@ -22,31 +22,28 @@ export function SilverRateControl({
 }: Props) {
   const rates = getSampleSilverRates();
   const isDark = tone === "dark";
-  const underMenu = placement === "under-menu";
+  const compact = placement === "under-menu";
 
   const colour = isDark
     ? "text-white/90 hover:text-white"
     : "text-[#302850] hover:text-[#241E3D]";
 
-  if (underMenu) {
+  if (compact) {
     const chip = isDark
-      ? "border-white/20 bg-black/55 text-white shadow-sm backdrop-blur-md"
-      : "border-[#E8E4E2] bg-[#FAF8F7]/95 text-[#302850] shadow-sm backdrop-blur-md";
+      ? "border-white/25 bg-black/45 text-white backdrop-blur-sm"
+      : "border-[#E8E4E2] bg-[#FAF8F7]/90 text-[#302850] backdrop-blur-sm";
     return (
       <button
         type="button"
         onClick={onOpen}
         aria-label={`Today’s silver rate, Hyderabad, ${formatInr(rates.today.perGramInr, 1)} per gram. Open silver rates.`}
-        className={`inline-flex items-center gap-1.5 rounded-sm border px-2.5 py-1.5 transition ${chip}`}
+        className={`inline-flex max-w-full items-center gap-0.5 rounded-sm border px-1.5 py-1 transition ${chip}`}
       >
-        <span className="text-[10px] uppercase tracking-[0.14em] opacity-80">
-          Silver
-        </span>
-        <span className="text-[12px] font-medium tabular-nums tracking-tight">
+        <span className="text-[10px] font-medium tabular-nums tracking-tight">
           {formatInr(rates.today.perGramInr, 1)}
           <span className="font-normal opacity-65">/g</span>
         </span>
-        <ChevronRight className="h-3 w-3 opacity-60" aria-hidden />
+        <ChevronRight className="h-2.5 w-2.5 shrink-0 opacity-55" aria-hidden />
       </button>
     );
   }
